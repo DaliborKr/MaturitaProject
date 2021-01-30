@@ -195,6 +195,25 @@ public class PlayerController : MonoBehaviour
                 isDashing = false;
                 canMove = true;
                 canFlip = true;
+                if (!isOnGround && !isWallsliding)
+                {
+                    Vector2 newForce = new Vector2(forceInAir * facingDir, 0);
+                    rb.AddForce(newForce);
+
+                    if (flippedInAir && !iswallJumping)
+                    {
+                        rb.velocity = new Vector2(movementInputValue, rb.velocity.y);
+
+                    }
+
+
+                    if (Mathf.Abs(rb.velocity.x) > speedMovement)
+                    {
+                        rb.velocity = new Vector2(speedMovement * facingDir, rb.velocity.y);
+                    }
+                    flippedInAir = false;
+                    iswallJumping = false;
+                }
             }
             
         }
