@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private float movementInputValue;
+    private float dashingTimeLeft;
+    private float lastDashTime = -10000000;
 
     public int currentNumberOfJumps;
     private int facingDir;
@@ -20,6 +22,9 @@ public class PlayerController : MonoBehaviour
     public bool isWallsliding;
     private bool flippedInAir;
     private bool iswallJumping;
+    private bool isDashing;
+    private bool canMove;
+    private bool canFlip;
 
     public float speedMovement = 10.0f;
     public float jumpForce = 16.0f;
@@ -30,7 +35,9 @@ public class PlayerController : MonoBehaviour
     public float wallHopForce;
     public float wallJumpForce;
     public float wallJumpForceStraight;
-    
+    public float dashSpeed;
+    public float dashingTime;
+    public float dashCooldown; 
 
     public int maxNumberOfJumps = 1;
 
@@ -46,6 +53,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         currentNumberOfJumps = maxNumberOfJumps;
+        dashingTimeLeft = dashingTime;
+        canFlip = true;
+        canMove = true;
     }
 
     void Update()
@@ -61,6 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         RealizeMovement();
         CheckEnvironment();
+        DashCheck();
     }
 
     private void CheckInput()
@@ -70,6 +81,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (Time.time > (lastDashTime + dashCooldown))
+            {
+                Dash();
+            }
         }
     }
 
@@ -81,36 +99,39 @@ public class PlayerController : MonoBehaviour
 
     private void RealizeMovement()
     {
-        if (isOnGround)
+        if (canMove)
         {
-            rb.velocity = new Vector2(speedMovement * movementInputValue, rb.velocity.y);
-        }
-        else if (!isOnGround && !isWallsliding  && movementInputValue != 0)
-        {
-            Vector2 newForce = new Vector2(forceInAir * movementInputValue, 0);
-            rb.AddForce(newForce);
-            
-            if (flippedInAir && !iswallJumping)
-            {
-                rb.velocity = new Vector2(movementInputValue, rb.velocity.y);
-                
-            }
-            
-
-            if (Mathf.Abs(rb.velocity.x) > speedMovement)
+            if (isOnGround)
             {
                 rb.velocity = new Vector2(speedMovement * movementInputValue, rb.velocity.y);
             }
-            flippedInAir = false;
-            iswallJumping = false;
-        }
-        if (isWallsliding)
-        {
-            if (rb.velocity.y < -wallSlideSpeed)
+            else if (!isOnGround && !isWallsliding && movementInputValue != 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+                Vector2 newForce = new Vector2(forceInAir * movementInputValue, 0);
+                rb.AddForce(newForce);
+
+                if (flippedInAir && !iswallJumping)
+                {
+                    rb.velocity = new Vector2(movementInputValue, rb.velocity.y);
+
+                }
+
+
+                if (Mathf.Abs(rb.velocity.x) > speedMovement)
+                {
+                    rb.velocity = new Vector2(speedMovement * movementInputValue, rb.velocity.y);
+                }
+                flippedInAir = false;
+                iswallJumping = false;
             }
-            
+            if (isWallsliding)
+            {
+                if (rb.velocity.y < -wallSlideSpeed)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+                }
+
+            }
         }
     }
 
@@ -150,6 +171,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Dash()
+    {
+        isDashing = true;
+        dashingTimeLeft = dashingTime;
+        lastDashTime = Time.time;
+    }
+
+    private void DashCheck()
+    {
+        if (isDashing)
+        {
+            if (dashingTimeLeft > 0)
+            {
+                canMove = false;
+                canFlip = false;
+                rb.velocity = new Vector2(dashSpeed * facingDir, 0);
+                dashingTimeLeft -= Time.deltaTime;
+            }
+
+            if (dashingTimeLeft <= 0 || isTouchingWall)
+            {
+                isDashing = false;
+                canMove = true;
+                canFlip = true;
+            }
+            
+        }
+    }
     private void CheckInputDirection()
     {
         if (isFacingRight)
@@ -227,18 +276,21 @@ public class PlayerController : MonoBehaviour
 
     private void FlipCharacter()
     {
-        if (!isWallsliding)
+        if (canFlip)
         {
-            transform.Rotate(0.0f, 180.0f, 0.0f);
-            isFacingRight = !isFacingRight;
+            if (!isWallsliding)
+            {
+                transform.Rotate(0.0f, 180.0f, 0.0f);
+                isFacingRight = !isFacingRight;
 
-            if (!isOnGround)
-            {
-                flippedInAir = true;
-            }
-            else
-            {
-                flippedInAir = false;
+                if (!isOnGround)
+                {
+                    flippedInAir = true;
+                }
+                else
+                {
+                    flippedInAir = false;
+                }
             }
         }
     }

@@ -1698,7 +1698,7 @@ MonoBehaviour:
   currentNumberOfJumps: 0
   isOnGround: 0
   isWallsliding: 0
-  speedMovement: 20
+  speedMovement: 25
   jumpForce: 20
   groundCheckRadius: 0.5
   wallSlideSpeed: 10
@@ -1707,6 +1707,9 @@ MonoBehaviour:
   wallHopForce: 50
   wallJumpForce: 20
   wallJumpForceStraight: 30
+  dashSpeed: 100
+  dashingTime: 0.15
+  dashCooldown: 1
   maxNumberOfJumps: 1
   wallHopDir: {x: 0.5, y: -2}
   wallJumpDir: {x: 1, y: 1.2}
