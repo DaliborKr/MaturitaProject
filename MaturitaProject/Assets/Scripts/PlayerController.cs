@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         CheckCanJump();
         CheckWallSliding();
         CheckInputDirection();
+        Debug.Log(rb.velocity.x);
     }
 
     private void FixedUpdate()
@@ -271,7 +272,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckWallSliding()
     {
-        if (isTouchingWall && !isOnGround && rb.velocity.x == 0)
+        if (isTouchingWall && !isOnGround && (rb.velocity.x < 0.000001 && rb.velocity.x > -0.000001))
         {
             isWallsliding = true;
         }
