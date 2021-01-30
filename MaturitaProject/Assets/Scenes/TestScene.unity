@@ -1704,7 +1704,7 @@ MonoBehaviour:
   wallSlideSpeed: 10
   wallCheckDistance: 1.1
   forceInAir: 1000
-  wallHopForce: 150
+  wallHopForce: 50
   wallJumpForce: 20
   wallJumpForceStraight: 30
   maxNumberOfJumps: 1

@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private bool wasOnGround;
     private bool isTouchingWall;
     public bool isWallsliding;
+    private bool flippedInAir;
+    private bool iswallJumping;
 
     public float speedMovement = 10.0f;
     public float jumpForce = 16.0f;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public float wallHopForce;
     public float wallJumpForce;
     public float wallJumpForceStraight;
+    
 
     public int maxNumberOfJumps = 1;
 
@@ -51,6 +54,7 @@ public class PlayerController : MonoBehaviour
         CheckMovementDirection();
         CheckCanJump();
         CheckWallSliding();
+        CheckInputDirection();
     }
 
     private void FixedUpdate()
@@ -86,11 +90,19 @@ public class PlayerController : MonoBehaviour
             Vector2 newForce = new Vector2(forceInAir * movementInputValue, 0);
             rb.AddForce(newForce);
             
+            if (flippedInAir && !iswallJumping)
+            {
+                rb.velocity = new Vector2(movementInputValue, rb.velocity.y);
+                
+            }
             
+
             if (Mathf.Abs(rb.velocity.x) > speedMovement)
             {
                 rb.velocity = new Vector2(speedMovement * movementInputValue, rb.velocity.y);
             }
+            flippedInAir = false;
+            iswallJumping = false;
         }
         if (isWallsliding)
         {
@@ -112,15 +124,6 @@ public class PlayerController : MonoBehaviour
         
         else if (canJump && isWallsliding && movementInputValue == 0)
         {
-            if (isFacingRight)
-            {
-                facingDir = 1;
-            }
-            else
-            {
-                facingDir = -1;
-            }
-
             Vector2 newWallHopForce = new Vector2(wallHopDir.x * wallHopForce * -facingDir , wallHopDir.y * wallHopForce);
             rb.AddForce(newWallHopForce, ForceMode2D.Impulse);
 
@@ -129,24 +132,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (canJump && isWallsliding  && movementInputValue != 0)
         {
-            if (isFacingRight)
-            {
-                facingDir = 1;
-            }
-            else
-            {
-                facingDir = -1;
-            }
-
-            if (movementInputValue > 0)
-            {
-                inputDir = 1;
-            }
-            else if (movementInputValue < 0)
-            {
-                inputDir = -1;
-            }
-
+            
             if (facingDir == inputDir)
             {
                 rb.velocity = new Vector2(rb.velocity.x, wallJumpForceStraight);
@@ -155,6 +141,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                iswallJumping = true;
                 rb.velocity = new Vector2(wallJumpForce * -facingDir, wallJumpForceStraight);
             }
 
@@ -163,6 +150,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void CheckInputDirection()
+    {
+        if (isFacingRight)
+        {
+            facingDir = 1;
+        }
+        else
+        {
+            facingDir = -1;
+        }
+
+        if (movementInputValue > 0)
+        {
+            inputDir = 1;
+        }
+        else if (movementInputValue < 0)
+        {
+            inputDir = -1;
+        }
+        else
+        {
+            inputDir = 0;
+        }
+    }
     private void CheckCanJump()
     {
         if ((isOnGround && rb.velocity.y <= 0) || isWallsliding)
@@ -220,6 +231,15 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(0.0f, 180.0f, 0.0f);
             isFacingRight = !isFacingRight;
+
+            if (!isOnGround)
+            {
+                flippedInAir = true;
+            }
+            else
+            {
+                flippedInAir = false;
+            }
         }
     }
 
