@@ -1984,12 +1984,13 @@ MonoBehaviour:
   wallSlideSpeed: 10
   wallCheckDistance: 1.1
   forceInAir: 1000
-  wallHopForce: 200
+  wallHopForce: 300
   wallJumpForce: 20
   wallJumpForceStraight: 30
   dashSpeed: 100
   dashingTime: 0.15
-  dashCooldown: 1
+  dashCooldown: 0.5
+  jumpDelay: 0.1
   maxNumberOfJumps: 2
   wallHopDir: {x: 0.5, y: 1}
   wallJumpDir: {x: 1, y: 1.2}
