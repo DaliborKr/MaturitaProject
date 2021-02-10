@@ -118,7 +118,6 @@ public class PlayerController : MonoBehaviour
                 if (flippedInAir && !iswallJumping)
                 {
                     rb.velocity = new Vector2(movementInputValue, rb.velocity.y);
-                    Debug.Log("ted jsem se oto4il a ypomoalil");
                 }
 
 
@@ -212,9 +211,12 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        isDashing = true;
-        dashingTimeLeft = dashingTime;
-        lastDashTime = Time.time;
+        if (isFirstDashInAir)
+        {
+            isDashing = true;
+            dashingTimeLeft = dashingTime;
+            lastDashTime = Time.time;
+        }
     }
 
     private void DashCheck()
