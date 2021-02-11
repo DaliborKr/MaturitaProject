@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_IdleState : IdleState
+public class E1_DetectPlayerState : DetectPlayerState
 {
     private Enemy1 enemyType;
 
-    public E1_IdleState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_IdleState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
+    public E1_DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
     {
         this.enemyType = enemyType;
     }
@@ -14,6 +14,8 @@ public class E1_IdleState : IdleState
     public override void Enter()
     {
         base.Enter();
+
+        enemy.SetVelocity(0f);
     }
 
     public override void Exit()
@@ -24,13 +26,11 @@ public class E1_IdleState : IdleState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (isInMinAgroRange)
+
+        if (!isInMaxAgroRange)
         {
-            stateMachine.ChangeState(enemyType.detectPlayerState);
-        }
-        else if (isIdleTimeOver)
-        {
-            stateMachine.ChangeState(enemyType.moveState);
+            enemyType.idleState.SetFlipAfterIdle(false);
+            stateMachine.ChangeState(enemyType.idleState);
         }
     }
 

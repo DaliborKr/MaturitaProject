@@ -24,15 +24,19 @@ public class E1_MoveState : MoveState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if (enemyType.rb.velocity.x == 0 && stateMachine.currentState == enemyType.moveState)
+     
+        if (isInMinAgroRange)
         {
-            enemyType.SetVelocity(stateData.movementSpeed);
+            stateMachine.ChangeState(enemyType.detectPlayerState);
         }
-
-        if (isDetectingWall || !isDecetingLedge)
+        else if (isDetectingWall || !isDecetingLedge)
         {
             enemyType.idleState.SetFlipAfterIdle(true);
+            stateMachine.ChangeState(enemyType.idleState);
+        }
+        else if (enemyType.rb.velocity.x == 0 && stateMachine.currentState == enemyType.moveState)
+        {
+            enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
         }
     }

@@ -8,6 +8,7 @@ public class IdleState : State
 
     protected bool flipAfterIdle;
     protected bool isIdleTimeOver;
+    protected bool isInMinAgroRange;
 
     protected float idleTime;
 
@@ -22,6 +23,7 @@ public class IdleState : State
 
         enemy.SetVelocity(0f);
         isIdleTimeOver = false;
+        isInMinAgroRange = enemy.CheckMinAgroRange();
         SetIdleTime();
     }
 
@@ -48,6 +50,8 @@ public class IdleState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        isInMinAgroRange = enemy.CheckMinAgroRange();
     }
 
     public void SetFlipAfterIdle(bool flip)

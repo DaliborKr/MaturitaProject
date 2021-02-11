@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     private Transform wallCheck;
     [SerializeField]
     private Transform ledgeCheck;
+    [SerializeField]
+    private Transform playerCheckAgroRange;
 
     private Vector2 velocityHolder;
 
@@ -76,6 +78,17 @@ public class Enemy : MonoBehaviour
         return Physics2D.Raycast(ledgeCheck.position, Vector2.down, enemyData.ledgeCheckDist, enemyData.whatIsGround);
     }
 
+    public virtual bool CheckMinAgroRange()
+    {
+        //return Physics2D.Raycast(playerCheckAgroRange.position, aliveGameObject.transform.right, enemyData.minAgroRangeDist, enemyData.whatIsPlayer);
+        return Physics2D.OverlapCircle(playerCheckAgroRange.position, 6, enemyData.whatIsPlayer);
+    }
+
+    public virtual bool CheckMaxAgroRange()
+    {
+        return Physics2D.Raycast(playerCheckAgroRange.position, aliveGameObject.transform.right, enemyData.maxAgroRangeDist, enemyData.whatIsPlayer);
+    }
+
     public virtual void Flip()
     {
         facingDir *= -1;
@@ -86,5 +99,10 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDir * enemyData.wallCheckDist));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDist));
+
+        //Gizmos.DrawLine(playerCheckAgroRange.position, playerCheckAgroRange.position + (Vector3)(Vector2.right * facingDir * enemyData.minAgroRangeDist));
+        Gizmos.DrawWireSphere(playerCheckAgroRange.position, 6);
+
+        Gizmos.DrawLine(playerCheckAgroRange.position, playerCheckAgroRange.position + (Vector3)(Vector2.right * facingDir * enemyData.maxAgroRangeDist));
     }
 }
