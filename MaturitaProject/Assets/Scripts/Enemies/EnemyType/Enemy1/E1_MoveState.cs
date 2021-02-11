@@ -25,6 +25,11 @@ public class E1_MoveState : MoveState
     {
         base.LogicUpdate();
 
+        if (enemyType.rb.velocity.x == 0 && stateMachine.currentState == enemyType.moveState)
+        {
+            enemyType.SetVelocity(stateData.movementSpeed);
+        }
+
         if (isDetectingWall || !isDecetingLedge)
         {
             enemyType.idleState.SetFlipAfterIdle(true);

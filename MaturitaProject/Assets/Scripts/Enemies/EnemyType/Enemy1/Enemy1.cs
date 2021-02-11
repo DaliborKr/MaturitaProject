@@ -31,4 +31,9 @@ public class Enemy1 : Enemy
         stateMachineEnemy.Initialize(moveState);
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
 }
