@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCheckDist: 0.5
   ledgeCheckDist: 0.5
+  minAgroRangeDist: 2
+  maxAgroRangeDist: 3.5
+  maxHealth: 100
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 512

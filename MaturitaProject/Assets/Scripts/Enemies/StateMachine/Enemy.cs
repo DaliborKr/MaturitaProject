@@ -65,6 +65,7 @@ public class Enemy : MonoBehaviour
         stateMachineEnemy.currentState.PhysicsUpdate();
     }
 
+    /*
     public virtual void GetDamage(AttackDetails attackDetails)
     {
         curentHealth -= attackDetails.damageNumber;
@@ -74,6 +75,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+    */
 
     public virtual void Die()
     {
