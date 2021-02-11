@@ -18,8 +18,6 @@ public class DetectPlayerState : State
     {
         base.Enter();
 
-        enemy.SetVelocity(0f);
-
         isInMinAgroRange = enemy.CheckMinAgroRange();
         isInMaxAgroRange = enemy.CheckMaxAgroRange();
     }

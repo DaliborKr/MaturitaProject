@@ -11,6 +11,8 @@ public class D_Enemy : ScriptableObject
     public float minAgroRangeDist = 2f;
     public float maxAgroRangeDist = 3.5f;
 
+    public int maxHealth = 100;
+
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;
 }

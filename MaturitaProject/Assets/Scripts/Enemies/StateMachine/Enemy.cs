@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
         private set;
     }
 
+    private int curentHealth;
+
     [SerializeField]
     private Transform wallCheck;
     [SerializeField]
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour
 
         stateMachineEnemy = new FiniteStateMachine();
 
+        curentHealth = enemyData.maxHealth;
         facingDir = 1;
     }
 
@@ -60,6 +63,21 @@ public class Enemy : MonoBehaviour
     public virtual void FixedUpdate()
     {
         stateMachineEnemy.currentState.PhysicsUpdate();
+    }
+
+    public virtual void GetDamage(AttackDetails attackDetails)
+    {
+        curentHealth -= attackDetails.damageNumber;
+
+        if (curentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    public virtual void Die()
+    {
+        Destroy(aliveGameObject);
     }
 
     public virtual void SetVelocity(float velocity)
