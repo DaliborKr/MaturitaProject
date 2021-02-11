@@ -284,6 +284,12 @@ public class PlayerController : MonoBehaviour
             inputDir = 0;
         }
     }
+
+    public int GetFacingDir()
+    {
+        return facingDir;
+    }
+
     private void CheckCanJump()
     {
         if ((isOnGround && rb.velocity.y <= 0) || isWallsliding)

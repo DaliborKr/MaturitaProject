@@ -296,9 +296,9 @@ GameObject:
   - component: {fileID: 185493540}
   - component: {fileID: 185493539}
   - component: {fileID: 185493542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Alive
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,6 +316,7 @@ Transform:
   m_Children:
   - {fileID: 1175540176}
   - {fileID: 1916789813}
+  - {fileID: 1008603711}
   m_Father: {fileID: 1191087028}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,7 +403,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 914720297
+  m_SortingLayerID: 1599245541
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1765e59cec5f07b4383090cb02b64c8d, type: 3}
@@ -829,7 +830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2192059, y: -2.8148167, z: 249.14926}
+  m_LocalPosition: {x: -90.8992, y: -2.8148167, z: 249.14926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 542401266}
@@ -1086,6 +1087,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 23.60994, y: 38.0322}
   m_EdgeRadius: 0
+--- !u!1 &845383085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845383086}
+  m_Layer: 9
+  m_Name: attackRangeCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845383086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845383085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.31, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1942029620}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &906249884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1336,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1008603710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008603711}
+  m_Layer: 0
+  m_Name: PlayerCheckAgroRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1008603711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008603710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 185493538}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1023690071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191087028}
   - component: {fileID: 1191087027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,8 +1687,11 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: aebbbed17c8090e40b1610c018b2643e, type: 2}
   wallCheck: {fileID: 1916789813}
   ledgeCheck: {fileID: 1175540176}
+  playerCheckAgroRange: {fileID: 1008603711}
   idleStateData: {fileID: 11400000, guid: 9529240c77ecec04a9d069631b94cfdd, type: 2}
   moveStateData: {fileID: 11400000, guid: 88c25ce167414764d80dc03be4209770, type: 2}
+  detectPlayerStateData: {fileID: 11400000, guid: 79d29d395068de545b444a94c64d53f7,
+    type: 2}
 --- !u!4 &1191087028
 Transform:
   m_ObjectHideFlags: 0
@@ -2019,7 +2083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798838668}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.2192059, y: -2.8148167, z: 249.14926}
+  m_LocalPosition: {x: -90.8992, y: -2.8148167, z: 249.14926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1299102914}
@@ -2104,9 +2168,10 @@ GameObject:
   - component: {fileID: 1942029622}
   - component: {fileID: 1942029621}
   - component: {fileID: 1942029623}
-  m_Layer: 0
-  m_Name: Player02
-  m_TagString: Untagged
+  - component: {fileID: 1942029624}
+  m_Layer: 9
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2148,7 +2213,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 914720297
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7a36585177bf74248acbe75054794a4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2169,11 +2234,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942029618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.08, y: -3.02, z: 0}
+  m_LocalPosition: {x: -57.6, y: -3.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1454282540}
   - {fileID: 190043770}
+  - {fileID: 845383086}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2260,6 +2326,24 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1942029624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942029618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a23cd6b1b7154884185f21f5b1f2a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRangeCheck: {fileID: 845383086}
+  damageNumber: 60
+  attackRadius: 4
+  whatIsDamageable:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &2015482323
 GameObject:
   m_ObjectHideFlags: 0

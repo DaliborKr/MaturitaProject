@@ -64,20 +64,22 @@ public class Enemy : MonoBehaviour
     {
         stateMachineEnemy.currentState.PhysicsUpdate();
     }
-
+    
     public virtual void GetDamage(AttackDetails attackDetails)
     {
         curentHealth -= attackDetails.damageNumber;
+
+        Debug.Log("au");
 
         if (curentHealth <= 0)
         {
             Die();
         }
     }
-
+    
     public virtual void Die()
     {
-        Destroy(aliveGameObject);
+        Destroy(gameObject);
     }
 
     public virtual void SetVelocity(float velocity)
@@ -112,7 +114,7 @@ public class Enemy : MonoBehaviour
         facingDir *= -1;
         aliveGameObject.transform.Rotate(0f, 180f, 0f);
     }
-
+    
     public virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDir * enemyData.wallCheckDist));
@@ -123,4 +125,5 @@ public class Enemy : MonoBehaviour
 
         Gizmos.DrawLine(playerCheckAgroRange.position, playerCheckAgroRange.position + (Vector3)(Vector2.right * facingDir * enemyData.maxAgroRangeDist));
     }
+    
 }
