@@ -2320,7 +2320,7 @@ MonoBehaviour:
   dashingTime: 0.15
   dashCooldown: 0.4
   jumpDelay: 0.1
-  maxNumberOfJumps: 1
+  maxNumberOfJumps: 2
   wallHopDir: {x: 0.5, y: 1}
   wallJumpDir: {x: 1, y: 1.2}
   groundCheck: {fileID: 1454282540}
