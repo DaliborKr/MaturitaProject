@@ -385,6 +385,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void EnableFlip()
+    {
+        canFlip = true;
+    }
+
+    public void DisableFlip()
+    {
+        canFlip = false;
+    }
+
+    public bool GetIsWallsliding()
+    {
+        return isWallsliding;
+    }
+
     private void FlipWallJumpingCharacter()
     {
         transform.Rotate(0.0f, 180.0f, 0.0f);

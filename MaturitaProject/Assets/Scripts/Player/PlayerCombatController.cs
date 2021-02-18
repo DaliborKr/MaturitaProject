@@ -5,6 +5,101 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    [SerializeField]
+    private bool combatEnabled;
+
+    private bool gotInput;
+    private bool isAtacking;
+
+    [SerializeField]
+    private int damageNumberAttack1;
+
+    [SerializeField]
+    private float inputTimer;
+    [SerializeField]
+    private float radiusAttack1;
+    private float lastInputTime = Mathf.NegativeInfinity;
+
+    [SerializeField]
+    private Transform rangeCheckAttack1;
+
+    [SerializeField]
+    private LayerMask whatIsDamageable;
+
+    private Animator animator;
+
+    private PlayerController pc;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        animator.SetBool("canAttack", combatEnabled);
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
+    private void Update()
+    {
+        CheckCombatInput();
+        CheckAttacks();
+    }
+
+    private void CheckCombatInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (combatEnabled)
+            {
+                gotInput = true;
+                lastInputTime = Time.time;
+            }
+        }
+    }
+
+    private void CheckAttacks()
+    {
+        if (gotInput && !pc.GetIsWallsliding())
+        {
+            if (!isAtacking)
+            {
+                gotInput = false;
+                isAtacking = true;
+                animator.SetBool("attack1", true);
+                animator.SetBool("isAttacking", isAtacking);
+            }
+        }
+
+        if (Time.time >= lastInputTime + inputTimer)
+        {
+            gotInput = false;
+        }
+    }
+
+    private void CheckAttackHitbox()
+    {
+        Collider2D[] objects = Physics2D.OverlapCircleAll(rangeCheckAttack1.position, radiusAttack1, whatIsDamageable);
+
+        AttackDetails attackDetails = new AttackDetails(damageNumberAttack1, pc.GetFacingDir());
+
+        foreach (Collider2D collider in objects)
+        {
+            Debug.Log("melo by byt au");
+            collider.transform.parent.SendMessage("GetDamage", attackDetails);
+        }
+    }
+
+    private void FinishAttack1()
+    {
+        isAtacking = false;
+        animator.SetBool("attack1", false);
+        animator.SetBool("isAttacking", isAtacking);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(rangeCheckAttack1.position, radiusAttack1);
+    }
+
+    /*
     private bool isInMeleeRange;
     private bool gotInput;
 
@@ -67,4 +162,5 @@ public class PlayerCombatController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackRangeCheck.position, attackRadius);
     }
+    */
 }

@@ -860,7 +860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -90.8992, y: -2.8148167, z: 249.14926}
+  m_LocalPosition: {x: -90.6992, y: -2.8148167, z: 249.14926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 542401266}
@@ -1127,7 +1127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 845383086}
   m_Layer: 9
-  m_Name: attackRangeCheck
+  m_Name: rangeCheckAttack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845383085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.31, y: -0.05, z: 0}
+  m_LocalPosition: {x: 3.07, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1942029620}
@@ -2083,7 +2083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798838668}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -90.8992, y: -2.8148167, z: 249.14926}
+  m_LocalPosition: {x: -90.6992, y: -2.8148167, z: 249.14926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1299102914}
@@ -2222,7 +2222,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.2, y: 3.95}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2236,7 +2236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942029618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.6, y: -3.02, z: 0}
+  m_LocalPosition: {x: -57.4, y: -3.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1454282540}
@@ -2284,7 +2284,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 2.2, y: 3.95}
+    newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2340,9 +2340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a23cd6b1b7154884185f21f5b1f2a3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRangeCheck: {fileID: 845383086}
-  damageNumber: 60
-  attackRadius: 4
+  combatEnabled: 1
+  damageNumberAttack1: 60
+  inputTimer: 0.05
+  radiusAttack1: 4
+  rangeCheckAttack1: {fileID: 845383086}
   whatIsDamageable:
     serializedVersion: 2
     m_Bits: 1024
