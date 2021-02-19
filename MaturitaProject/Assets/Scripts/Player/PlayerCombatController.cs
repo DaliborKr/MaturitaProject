@@ -6,10 +6,14 @@ using UnityEngine;
 public class PlayerCombatController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject projectile1Prefab;
+
+    [SerializeField]
     private bool combatEnabled;
 
     private bool gotInput;
     private bool isAtacking;
+    private bool isMelee;
 
     [SerializeField]
     private int damageNumberAttack1;
@@ -22,6 +26,8 @@ public class PlayerCombatController : MonoBehaviour
 
     [SerializeField]
     private Transform rangeCheckAttack1;
+    [SerializeField]
+    private Transform firePointPlayer;
 
     [SerializeField]
     private LayerMask whatIsDamageable;
@@ -35,6 +41,7 @@ public class PlayerCombatController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetBool("canAttack", combatEnabled);
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        isMelee = true;
     }
 
     private void Update()
@@ -45,14 +52,32 @@ public class PlayerCombatController : MonoBehaviour
 
     private void CheckCombatInput()
     {
+        if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0))
+        {
+            isMelee = !isMelee;
+        }
         if (Input.GetMouseButtonDown(0))
         {
-            if (combatEnabled)
+            if (isMelee)
             {
-                gotInput = true;
-                lastInputTime = Time.time;
+                if (combatEnabled)
+                {
+                    gotInput = true;
+                    lastInputTime = Time.time;
+                }
+            }
+            if (!isMelee)
+            {
+                animator.SetBool("isFiring", true);
             }
         }
+    }
+
+    private void Fire()
+    {
+        animator.SetBool("isFiring", false);
+        Instantiate(projectile1Prefab, firePointPlayer.position, firePointPlayer.rotation);
+
     }
 
     private void CheckAttacks()
