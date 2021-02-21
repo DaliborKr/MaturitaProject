@@ -8,21 +8,27 @@ public class PlayerCombatController : MonoBehaviour
     [SerializeField]
     private GameObject projectile1Prefab;
 
+    private LineRenderer fireLinePlayer;
+
     [SerializeField]
     private bool combatEnabled;
 
     private bool gotInput;
     private bool isAtacking;
     private bool isMelee;
+    private bool isTryingToFire;
 
     [SerializeField]
     private int damageNumberAttack1;
 
     [SerializeField]
+    private float fireDelay;
+    [SerializeField]
     private float inputTimer;
     [SerializeField]
     private float radiusAttack1;
     private float lastInputTime = Mathf.NegativeInfinity;
+    private float lastFireTime = Mathf.NegativeInfinity;
 
     [SerializeField]
     private Transform rangeCheckAttack1;
@@ -41,6 +47,7 @@ public class PlayerCombatController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetBool("canAttack", combatEnabled);
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        fireLinePlayer = GameObject.Find("fireLinePlayer").GetComponent<LineRenderer>();
         isMelee = true;
     }
 
@@ -48,6 +55,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         CheckCombatInput();
         CheckAttacks();
+        CheckNotDashingWhileTryToFire();
     }
 
     private void CheckCombatInput()
@@ -66,17 +74,60 @@ public class PlayerCombatController : MonoBehaviour
                     lastInputTime = Time.time;
                 }
             }
-            if (!isMelee)
+            if (!isMelee && !pc.GetIsWallsliding())
             {
-                animator.SetBool("isFiring", true);
+                tryToFire();
             }
+        }
+        
+        if (Input.GetMouseButtonUp(0) && !isMelee && isTryingToFire )
+        {
+            isTryingToFire = false;
+            animator.SetBool("isTryingToFire", isTryingToFire);
+            animator.SetBool("isFiring", true);
+            fireLinePlayer.enabled = false;
+        }
+
+        if (Input.GetMouseButtonDown(1) && isTryingToFire)
+        {
+            CancelTryToFire();
+        }
+        
+    }
+
+    private void CheckNotDashingWhileTryToFire()
+    {
+        if (pc.GetIsDashing() && isTryingToFire)
+        {
+            CancelTryToFire();
+        }
+    }
+
+    private void CancelTryToFire()
+    {
+        isTryingToFire = false;
+        animator.SetBool("isTryingToFire", isTryingToFire);
+        fireLinePlayer.enabled = false;
+        pc.EnableFlip();
+    }
+
+    private void tryToFire()
+    {
+        if (Time.time >= lastFireTime + fireDelay)
+        {
+            pc.DisableFlip();
+            fireLinePlayer.enabled = true;
+            isTryingToFire = true;
+            animator.SetBool("isTryingToFire", isTryingToFire);
         }
     }
 
     private void Fire()
     {
+        lastFireTime = Time.time;
         animator.SetBool("isFiring", false);
         Instantiate(projectile1Prefab, firePointPlayer.position, firePointPlayer.rotation);
+        pc.EnableFlip();
 
     }
 

@@ -400,6 +400,11 @@ public class PlayerController : MonoBehaviour
         return isWallsliding;
     }
 
+    public bool GetIsDashing()
+    {
+        return isDashing;
+    }
+
     private void FlipWallJumpingCharacter()
     {
         transform.Rotate(0.0f, 180.0f, 0.0f);

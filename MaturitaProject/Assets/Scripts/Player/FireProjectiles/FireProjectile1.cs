@@ -11,6 +11,8 @@ public class FireProjectile1 : MonoBehaviour
 
     private GameObject firePointPlayer;
 
+    private FireLinePlayer fireLinePlayer;
+
     private Vector2 fireDirection;
 
     [SerializeField]
@@ -26,6 +28,7 @@ public class FireProjectile1 : MonoBehaviour
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         firePointPlayer = GameObject.Find("firePointPlayer");
+        fireLinePlayer = GameObject.Find("fireLinePlayer").GetComponent<FireLinePlayer>();
         SetProjectileDirectory();
     }
 
@@ -39,17 +42,11 @@ public class FireProjectile1 : MonoBehaviour
     private void SetProjectileDirectory()
     {
         int facingDir = pc.GetFacingDir();
-        Vector2 firePointPlayerPosition = firePointPlayer.transform.position;
-        Vector3 mausePositionV3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mausePosition = new Vector2(mausePositionV3.x, mausePositionV3.y);
-
+        fireDirection = fireLinePlayer.getFireDirection();
         if (facingDir == -1)
         {
-            mausePosition.x *= (-1);
-            firePointPlayerPosition.x *= (-1);
+            fireDirection.x *= -1;
         }
-
-        fireDirection = (mausePosition - firePointPlayerPosition).normalized;
     }
 
     private void CheckProjectileHitbox()
