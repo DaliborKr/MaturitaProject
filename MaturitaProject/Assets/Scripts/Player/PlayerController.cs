@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FlipCharacter()
+    public void FlipCharacter()
     {
         if (canFlip)
         {

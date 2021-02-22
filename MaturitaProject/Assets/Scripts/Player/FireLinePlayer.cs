@@ -36,18 +36,18 @@ public class FireLinePlayer : MonoBehaviour
 
         if(facingDir == 1)
         {
-            facingAdder = 5;
+            facingAdder = 200;
         }
         else
         {
-            facingAdder = -5;
+            facingAdder = -200;
         }
+        // Tady je bod kde jsi byl
 
-        Vector3 mousePositionV3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePositionV3 = Input.mousePosition;
 
-        Vector2 mousePositionV2 = new Vector2(firePointPlayer.transform.position.x + facingAdder, mousePositionV3.y);
+        Vector2 mousePositionV2 = new Vector2(firePointPlayer.transform.position.x + facingAdder, mousePositionV3.y -500);
         Vector2 lineFirePointPlayerV2 = new Vector2(firePointPlayer.transform.position.x, firePointPlayer.transform.position.y);
-
 
         mousePositionV3.z = 0;
 
@@ -61,7 +61,6 @@ public class FireLinePlayer : MonoBehaviour
 
         if (angle < 75)
         {
-
             Vector3 fireDirectionV3 = new Vector3(fireDirectionMultiplied.x, fireDirectionMultiplied.y, 0);
 
             fireDirectionHelpV3 = fireDirectionV3;

@@ -55,7 +55,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         CheckCombatInput();
         CheckAttacks();
-        CheckNotDashingWhileTryToFire();
+        CheckNotDashingOrWallslidngWhileTryToFire();
     }
 
     private void CheckCombatInput()
@@ -76,7 +76,7 @@ public class PlayerCombatController : MonoBehaviour
             }
             if (!isMelee && !pc.GetIsWallsliding())
             {
-                tryToFire();
+                TryToFire();
             }
         }
         
@@ -88,16 +88,27 @@ public class PlayerCombatController : MonoBehaviour
             fireLinePlayer.enabled = false;
         }
 
-        if (Input.GetMouseButtonDown(1) && isTryingToFire)
+        if (Input.GetKeyDown(KeyCode.E) && isTryingToFire)
         {
             CancelTryToFire();
+        }
+
+        if (Input.GetMouseButtonUp(1) && isTryingToFire)
+        {
+            pc.EnableFlip();
+            pc.FlipCharacter();
+            pc.DisableFlip();
         }
         
     }
 
-    private void CheckNotDashingWhileTryToFire()
+    private void CheckNotDashingOrWallslidngWhileTryToFire()
     {
         if (pc.GetIsDashing() && isTryingToFire)
+        {
+            CancelTryToFire();
+        }
+        if (pc.GetIsWallsliding() && isTryingToFire)
         {
             CancelTryToFire();
         }
@@ -111,7 +122,7 @@ public class PlayerCombatController : MonoBehaviour
         pc.EnableFlip();
     }
 
-    private void tryToFire()
+    private void TryToFire()
     {
         if (Time.time >= lastFireTime + fireDelay)
         {
