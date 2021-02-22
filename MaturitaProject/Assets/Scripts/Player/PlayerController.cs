@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private int inputDir;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     private bool isFacingRight = true;
     private bool canJump;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private bool canFlip;
     private bool isFirstDashInAir;
     private bool isAttemptingToJump;
+    private bool isWalking;
 
     public float speedMovement = 10.0f;
     public float jumpForce = 16.0f;
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         currentNumberOfJumps = maxNumberOfJumps;
         dashingTimeLeft = dashingTime;
         canFlip = true;
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         CheckWallSliding();
         CheckInputDirection();
         JumpCheck();
+        UpdateAnimations();
     }
 
     private void FixedUpdate()
@@ -94,6 +98,14 @@ public class PlayerController : MonoBehaviour
                 Dash();
             }
         }
+    }
+
+    private void UpdateAnimations()
+    {
+        animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isGrounded", isOnGround);
+        animator.SetFloat("yVelocity", rb.velocity.y);
+        animator.SetBool("isWallSliding", isWallsliding);
     }
 
     private void CheckEnvironment()
@@ -176,6 +188,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 newWallHopForce = new Vector2(wallHopDir.x * wallHopForce * -facingDir , wallHopDir.y * wallHopForce);
             rb.AddForce(newWallHopForce, ForceMode2D.Impulse);
+            FlipWallJumpingCharacter();
 
             isWallsliding = false;
             currentNumberOfJumps--;
@@ -284,6 +297,12 @@ public class PlayerController : MonoBehaviour
             inputDir = 0;
         }
     }
+
+    public int GetFacingDir()
+    {
+        return facingDir;
+    }
+
     private void CheckCanJump()
     {
         if ((isOnGround && rb.velocity.y <= 0) || isWallsliding)
@@ -334,9 +353,18 @@ public class PlayerController : MonoBehaviour
         {
             FlipCharacter();
         }
+
+        if (rb.velocity.x != 0)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
     }
 
-    private void FlipCharacter()
+    public void FlipCharacter()
     {
         if (canFlip)
         {
@@ -355,6 +383,26 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EnableFlip()
+    {
+        canFlip = true;
+    }
+
+    public void DisableFlip()
+    {
+        canFlip = false;
+    }
+
+    public bool GetIsWallsliding()
+    {
+        return isWallsliding;
+    }
+
+    public bool GetIsDashing()
+    {
+        return isDashing;
     }
 
     private void FlipWallJumpingCharacter()
