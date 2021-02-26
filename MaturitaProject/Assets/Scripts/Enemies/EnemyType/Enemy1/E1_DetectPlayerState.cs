@@ -32,6 +32,11 @@ public class E1_DetectPlayerState : DetectPlayerState
             enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
         }
+
+        if (isInMaxAgroRange && Time.time >= startTime + stateData.timeToAttack)
+        {
+            stateMachine.ChangeState(enemyType.attackState);
+        }
     }
 
     public override void PhysicsUpdate()

@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectPlayerState : State
+public class AttackState : State
 {
-    public D_DetectPlayerState stateData;
+    protected D_AttackState stateData;
 
-    protected bool isInMinAgroRange;
-    protected bool isInMaxAgroRange;
-
-    public DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData) : base(stateMachine, enemy, animatorNameBool)
+    public AttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_AttackState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
     }
@@ -17,16 +14,11 @@ public class DetectPlayerState : State
     public override void DoChecks()
     {
         base.DoChecks();
-
-        isInMinAgroRange = enemy.CheckMinAgroRange();
-        isInMaxAgroRange = enemy.CheckMaxAgroRange();
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        
     }
 
     public override void Exit()

@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     {
         stateMachineEnemy.currentState.PhysicsUpdate();
     }
-    
+
     public virtual void GetDamage(AttackDetails attackDetails)
     {
         curentHealth -= attackDetails.damageNumber;
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    
+
     public virtual void Die()
     {
         Destroy(gameObject);
@@ -100,13 +100,13 @@ public class Enemy : MonoBehaviour
 
     public virtual bool CheckMinAgroRange()
     {
-        //return Physics2D.Raycast(playerCheckAgroRange.position, aliveGameObject.transform.right, enemyData.minAgroRangeDist, enemyData.whatIsPlayer);
-        return Physics2D.OverlapCircle(playerCheckAgroRange.position, 6, enemyData.whatIsPlayer);
+        return Physics2D.OverlapCircle(playerCheckAgroRange.position, enemyData.minAgroRangeDist, enemyData.whatIsPlayer);
+
     }
 
     public virtual bool CheckMaxAgroRange()
     {
-        return Physics2D.Raycast(playerCheckAgroRange.position, aliveGameObject.transform.right, enemyData.maxAgroRangeDist, enemyData.whatIsPlayer);
+        return Physics2D.OverlapBox(playerCheckAgroRange.position, enemyData.maxAgroRangeDist, 0, enemyData.whatIsPlayer);
     }
 
     public virtual void Flip()
@@ -114,16 +114,17 @@ public class Enemy : MonoBehaviour
         facingDir *= -1;
         aliveGameObject.transform.Rotate(0f, 180f, 0f);
     }
-    
+
     public virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDir * enemyData.wallCheckDist));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDist));
 
         //Gizmos.DrawLine(playerCheckAgroRange.position, playerCheckAgroRange.position + (Vector3)(Vector2.right * facingDir * enemyData.minAgroRangeDist));
-        Gizmos.DrawWireSphere(playerCheckAgroRange.position, 6);
+        Gizmos.DrawWireSphere(playerCheckAgroRange.position, enemyData.minAgroRangeDist);
 
-        Gizmos.DrawLine(playerCheckAgroRange.position, playerCheckAgroRange.position + (Vector3)(Vector2.right * facingDir * enemyData.maxAgroRangeDist));
+        Vector3 vecotorHelp = new Vector3(enemyData.maxAgroRangeDist.x, enemyData.maxAgroRangeDist.y, 1.0f);
+        Gizmos.DrawWireCube(playerCheckAgroRange.position, vecotorHelp);
+
     }
-    
 }

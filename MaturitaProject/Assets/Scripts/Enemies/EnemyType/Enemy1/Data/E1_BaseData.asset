@@ -15,7 +15,7 @@ MonoBehaviour:
   wallCheckDist: 0.5
   ledgeCheckDist: 0.5
   minAgroRangeDist: 2
-  maxAgroRangeDist: 3.5
+  maxAgroRangeDist: {x: 10, y: 4}
   maxHealth: 100
   whatIsGround:
     serializedVersion: 2

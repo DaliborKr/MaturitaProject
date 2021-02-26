@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185493537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1175540176}
@@ -393,18 +393,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.11531842}
+  m_Offset: {x: 0, y: -1.0685079}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.82, y: 2.56}
+    oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 1.82, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4380635, y: 2.300533}
+  m_Size: {x: 3.691063, y: 2.531609}
   m_EdgeRadius: 0
 --- !u!50 &185493540
 Rigidbody2D:
@@ -466,7 +466,8 @@ SpriteRenderer:
   m_SortingLayerID: 1599245541
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1765e59cec5f07b4383090cb02b64c8d, type: 3}
+  m_Sprite: {fileID: 2169433458929166460, guid: 05aa294ebd7d1b9408d0dee124c362d7,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -866,7 +867,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1622,7 +1623,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175540175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.42, y: -0.92, z: 0}
+  m_LocalPosition: {x: 2.43, y: -2.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 185493538}
@@ -1722,6 +1723,7 @@ MonoBehaviour:
   moveStateData: {fileID: 11400000, guid: 88c25ce167414764d80dc03be4209770, type: 2}
   detectPlayerStateData: {fileID: 11400000, guid: 79d29d395068de545b444a94c64d53f7,
     type: 2}
+  attackStateData: {fileID: 0}
 --- !u!4 &1191087028
 Transform:
   m_ObjectHideFlags: 0
@@ -2283,7 +2285,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1942029620}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 25
+    OrthographicSize: 30
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2320,7 +2322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916789812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.91, y: 0, z: 0}
+  m_LocalPosition: {x: 2.04, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 185493538}

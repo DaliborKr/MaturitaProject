@@ -25,7 +25,7 @@ public class FireLinePlayer : MonoBehaviour
         firePointPlayer = GameObject.Find("firePointPlayer");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         SetFireLine();
     }

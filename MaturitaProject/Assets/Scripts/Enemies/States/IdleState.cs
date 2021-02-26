@@ -17,13 +17,19 @@ public class IdleState : State
         this.stateData = stateData;
     }
 
+    public override void DoChecks()
+    {
+        base.DoChecks();
+
+        isInMinAgroRange = enemy.CheckMinAgroRange();
+    }
+
     public override void Enter()
     {
         base.Enter();
 
         enemy.SetVelocity(0f);
         isIdleTimeOver = false;
-        isInMinAgroRange = enemy.CheckMinAgroRange();
         SetIdleTime();
     }
 
@@ -51,7 +57,6 @@ public class IdleState : State
     {
         base.PhysicsUpdate();
 
-        isInMinAgroRange = enemy.CheckMinAgroRange();
     }
 
     public void SetFlipAfterIdle(bool flip)
