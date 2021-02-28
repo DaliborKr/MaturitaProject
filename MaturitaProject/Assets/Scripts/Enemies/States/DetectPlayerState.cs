@@ -8,6 +8,7 @@ public class DetectPlayerState : State
 
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
+    protected bool isInMeleeAttackRange;
 
     public DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
@@ -20,6 +21,7 @@ public class DetectPlayerState : State
 
         isInMinAgroRange = enemy.CheckMinAgroRange();
         isInMaxAgroRange = enemy.CheckMaxAgroRange();
+        isInMeleeAttackRange = enemy.CheckPlayerInMeleeAttackRange();
     }
 
     public override void Enter()

@@ -32,6 +32,12 @@ public class Enemy : MonoBehaviour
         private set;
     }
 
+    public AnimationToStates animationToStates
+    {
+        get;
+        private set;
+    }
+
     private int curentHealth;
 
     [SerializeField]
@@ -48,6 +54,7 @@ public class Enemy : MonoBehaviour
         aliveGameObject = transform.Find("Alive").gameObject;
         rb = aliveGameObject.GetComponent<Rigidbody2D>();
         anim = aliveGameObject.GetComponent<Animator>();
+        animationToStates = aliveGameObject.GetComponent<AnimationToStates>();
 
         stateMachineEnemy = new FiniteStateMachine();
 
@@ -108,6 +115,12 @@ public class Enemy : MonoBehaviour
     {
         return Physics2D.OverlapBox(playerCheckAgroRange.position, enemyData.maxAgroRangeDist, 0, enemyData.whatIsPlayer);
     }
+
+    public virtual bool CheckPlayerInMeleeAttackRange() 
+    {
+        return Physics2D.OverlapCircle(playerCheckAgroRange.position, enemyData.meleeAttackRange, enemyData.whatIsPlayer); 
+    }
+        
 
     public virtual void Flip()
     {

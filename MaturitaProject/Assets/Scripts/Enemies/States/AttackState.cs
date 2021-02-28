@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class AttackState : State
 {
-    protected D_AttackState stateData;
+    protected Transform attackPoint;
 
-    public AttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_AttackState stateData) : base(stateMachine, enemy, animatorNameBool)
+    protected bool animationEnded;
+    protected bool isInMinAgroRange;
+
+    public AttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint) : base(stateMachine, enemy, animatorNameBool)
     {
-        this.stateData = stateData;
+        this.attackPoint = attackPoint;
     }
 
     public override void DoChecks()
     {
         base.DoChecks();
+
+        isInMinAgroRange = enemy.CheckMinAgroRange();
     }
 
     public override void Enter()
     {
         base.Enter();
+
+        animationEnded = false;
+        enemy.animationToStates.attackState = this;
+        enemy.SetVelocity(0f);
     }
 
     public override void Exit()
@@ -34,5 +43,15 @@ public class AttackState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    public virtual void StartAttack()
+    {
+
+    }
+
+    public virtual void FinishAttack()
+    {
+        animationEnded = true;
     }
 }

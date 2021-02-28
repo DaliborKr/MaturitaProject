@@ -11,6 +11,8 @@ public class D_Enemy : ScriptableObject
     public float minAgroRangeDist = 2f;
     public Vector2 maxAgroRangeDist = new Vector2(5,2);
 
+    public float meleeAttackRange = 1f;
+
     public int maxHealth = 100;
 
     public LayerMask whatIsGround;

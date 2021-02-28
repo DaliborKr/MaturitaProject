@@ -10,15 +10,15 @@ public class AttackDetails
         private set;
     }
 
-    public int facingDir
+    public Vector2 position
     {
         get;
         private set;
     }
 
-    public AttackDetails(int damageNumber, int facingDir)
+    public AttackDetails(int damageNumber, Vector2 position)
     {
         this.damageNumber = damageNumber;
-        this.facingDir = facingDir;
+        this.position = position;
     }
 }

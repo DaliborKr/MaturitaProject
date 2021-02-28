@@ -27,15 +27,15 @@ public class E1_DetectPlayerState : DetectPlayerState
     {
         base.LogicUpdate();
 
+        if (isInMeleeAttackRange)
+        {
+            stateMachine.ChangeState(enemyType.meleeAttackState);
+        }
+
         if (!isInMaxAgroRange)
         {
             enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
-        }
-
-        if (isInMaxAgroRange && Time.time >= startTime + stateData.timeToAttack)
-        {
-            stateMachine.ChangeState(enemyType.attackState);
         }
     }
 

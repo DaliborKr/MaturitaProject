@@ -22,7 +22,7 @@ public class Enemy1 : Enemy
         private set;
     }
 
-    public E1_AttackState attackState
+    public E1_MeleeAttackState meleeAttackState
     {
         get;
         private set;
@@ -35,7 +35,10 @@ public class Enemy1 : Enemy
     [SerializeField]
     private D_DetectPlayerState detectPlayerStateData;
     [SerializeField]
-    private D_AttackState attackStateData;
+    private D_MeleeAttackState meleeAttackStateData;
+
+    [SerializeField]
+    private Transform meleeAttackPoint;
 
     public override void Start()
     {
@@ -44,7 +47,7 @@ public class Enemy1 : Enemy
         moveState = new E1_MoveState(stateMachineEnemy, this, "move", moveStateData, this);
         idleState = new E1_IdleState(stateMachineEnemy, this, "idle", idleStateData, this);
         detectPlayerState = new E1_DetectPlayerState(stateMachineEnemy, this, "detectPlayer", detectPlayerStateData, this);
-        attackState = new E1_AttackState(stateMachineEnemy, this, "attack", attackStateData, this);
+        meleeAttackState = new E1_MeleeAttackState(stateMachineEnemy, this, "meleeAttack", meleeAttackPoint, meleeAttackStateData, this);
 
         stateMachineEnemy.Initialize(moveState);
     }
@@ -52,6 +55,13 @@ public class Enemy1 : Enemy
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Gizmos.DrawWireSphere(meleeAttackPoint.position, meleeAttackStateData.attackRadius);
     }
 
 }

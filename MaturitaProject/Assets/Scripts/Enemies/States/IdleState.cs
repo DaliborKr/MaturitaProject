@@ -9,6 +9,7 @@ public class IdleState : State
     protected bool flipAfterIdle;
     protected bool isIdleTimeOver;
     protected bool isInMinAgroRange;
+    protected bool isInMaxAgroRange;
 
     protected float idleTime;
 
@@ -22,6 +23,7 @@ public class IdleState : State
         base.DoChecks();
 
         isInMinAgroRange = enemy.CheckMinAgroRange();
+        isInMaxAgroRange = enemy.CheckMaxAgroRange();
     }
 
     public override void Enter()
