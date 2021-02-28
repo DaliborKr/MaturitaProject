@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectPlayerState : State
+public class RunState : State
 {
-    public D_DetectPlayerState stateData;
+    protected D_RunState stateData;
 
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
     protected bool isInMeleeAttackRange;
 
-    public DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData) : base(stateMachine, enemy, animatorNameBool)
+    public RunState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_RunState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
     }
@@ -27,6 +27,7 @@ public class DetectPlayerState : State
     public override void Enter()
     {
         base.Enter();
+        enemy.SetVelocity(stateData.runSpeed);
     }
 
     public override void Exit()

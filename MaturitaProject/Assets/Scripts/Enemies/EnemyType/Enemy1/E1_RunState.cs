@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E1_DetectPlayerState : DetectPlayerState
+public class E1_RunState : RunState
 {
     private Enemy1 enemyType;
 
-    public E1_DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
+    public E1_RunState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_RunState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
     {
         this.enemyType = enemyType;
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
     }
 
     public override void Enter()
     {
         base.Enter();
-
-        enemy.SetVelocity(0f);
     }
 
     public override void Exit()
@@ -27,28 +30,23 @@ public class E1_DetectPlayerState : DetectPlayerState
     {
         base.LogicUpdate();
 
-        if (isInMeleeAttackRange)
-        {
-            stateMachine.ChangeState(enemyType.meleeAttackState);
-        }
-
         if (isInMinAgroRange)
         {
             if ((enemy.player.transform.position.x < enemy.aliveGameObject.transform.position.x && enemy.facingDir == 1) || (enemy.player.transform.position.x > enemy.aliveGameObject.transform.position.x && enemy.facingDir == -1))
             {
                 enemy.Flip();
+                enemy.rb.velocity *= -1;
             }
         }
 
-        if (isInMinAgroRange && Time.time > startTime + stateData.timeToTrigger)
-        {           
-            stateMachine.ChangeState(enemyType.runState);
+        if (isInMeleeAttackRange)
+        {
+            stateMachine.ChangeState(enemyType.meleeAttackState);
         }
 
-        if (!isInMinAgroRange)
+        if (!isInMaxAgroRange)
         {
-            enemyType.idleState.SetFlipAfterIdle(false);
-            stateMachine.ChangeState(enemyType.idleState);
+            stateMachine.ChangeState(enemyType.detectPlayerState);
         }
     }
 

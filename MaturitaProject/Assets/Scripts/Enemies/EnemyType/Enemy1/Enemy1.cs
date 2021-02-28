@@ -28,6 +28,12 @@ public class Enemy1 : Enemy
         private set;
     }
 
+    public E1_RunState runState
+    {
+        get;
+        private set;
+    }
+
     [SerializeField]
     private D_IdleState idleStateData;
     [SerializeField]
@@ -36,6 +42,8 @@ public class Enemy1 : Enemy
     private D_DetectPlayerState detectPlayerStateData;
     [SerializeField]
     private D_MeleeAttackState meleeAttackStateData;
+    [SerializeField]
+    private D_RunState runStateData;
 
     [SerializeField]
     private Transform meleeAttackPoint;
@@ -48,6 +56,7 @@ public class Enemy1 : Enemy
         idleState = new E1_IdleState(stateMachineEnemy, this, "idle", idleStateData, this);
         detectPlayerState = new E1_DetectPlayerState(stateMachineEnemy, this, "detectPlayer", detectPlayerStateData, this);
         meleeAttackState = new E1_MeleeAttackState(stateMachineEnemy, this, "meleeAttack", meleeAttackPoint, meleeAttackStateData, this);
+        runState = new E1_RunState(stateMachineEnemy, this, "run", runStateData, this);
 
         stateMachineEnemy.Initialize(moveState);
     }

@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 
     public D_Enemy enemyData;
 
+    public GameObject player;
+
     public int facingDir
     {
         get;
@@ -45,7 +47,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform ledgeCheck;
     [SerializeField]
-    private Transform playerCheckAgroRange;
+    private Transform playerMinCheckAgroRange;
+    [SerializeField]
+    private Transform playerMaxCheckAgroRange;
+    [SerializeField]
+    private Transform attackPoint;
 
     private Vector2 velocityHolder;
 
@@ -55,6 +61,7 @@ public class Enemy : MonoBehaviour
         rb = aliveGameObject.GetComponent<Rigidbody2D>();
         anim = aliveGameObject.GetComponent<Animator>();
         animationToStates = aliveGameObject.GetComponent<AnimationToStates>();
+        player = GameObject.Find("Player");
 
         stateMachineEnemy = new FiniteStateMachine();
 
@@ -107,18 +114,18 @@ public class Enemy : MonoBehaviour
 
     public virtual bool CheckMinAgroRange()
     {
-        return Physics2D.OverlapCircle(playerCheckAgroRange.position, enemyData.minAgroRangeDist, enemyData.whatIsPlayer);
+        return Physics2D.OverlapBox(playerMinCheckAgroRange.position, enemyData.minAgroRangeDist, 0,enemyData.whatIsPlayer);
 
     }
 
     public virtual bool CheckMaxAgroRange()
     {
-        return Physics2D.OverlapBox(playerCheckAgroRange.position, enemyData.maxAgroRangeDist, 0, enemyData.whatIsPlayer);
+        return Physics2D.OverlapBox(playerMaxCheckAgroRange.position, enemyData.maxAgroRangeDist, 0, enemyData.whatIsPlayer);
     }
 
     public virtual bool CheckPlayerInMeleeAttackRange() 
     {
-        return Physics2D.OverlapCircle(playerCheckAgroRange.position, enemyData.meleeAttackRange, enemyData.whatIsPlayer); 
+        return Physics2D.OverlapCircle(attackPoint.position, enemyData.meleeAttackRange, enemyData.whatIsPlayer); 
     }
         
 
@@ -133,11 +140,13 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + (Vector3)(Vector2.right * facingDir * enemyData.wallCheckDist));
         Gizmos.DrawLine(ledgeCheck.position, ledgeCheck.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDist));
 
-        //Gizmos.DrawLine(playerCheckAgroRange.position, playerCheckAgroRange.position + (Vector3)(Vector2.right * facingDir * enemyData.minAgroRangeDist));
-        Gizmos.DrawWireSphere(playerCheckAgroRange.position, enemyData.minAgroRangeDist);
+        Vector3 vecotorHelpMin = new Vector3(enemyData.minAgroRangeDist.x, enemyData.minAgroRangeDist.y, 1.0f);
+        Gizmos.DrawWireCube(playerMinCheckAgroRange.position, vecotorHelpMin);
 
-        Vector3 vecotorHelp = new Vector3(enemyData.maxAgroRangeDist.x, enemyData.maxAgroRangeDist.y, 1.0f);
-        Gizmos.DrawWireCube(playerCheckAgroRange.position, vecotorHelp);
+        Vector3 vecotorHelpMax = new Vector3(enemyData.maxAgroRangeDist.x, enemyData.maxAgroRangeDist.y, 1.0f);
+        Gizmos.DrawWireCube(playerMaxCheckAgroRange.position, vecotorHelpMax);
+
+        Gizmos.DrawWireSphere(attackPoint.position, enemyData.meleeAttackRange);
 
     }
 }

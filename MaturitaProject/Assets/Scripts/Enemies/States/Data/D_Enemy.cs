@@ -8,8 +8,8 @@ public class D_Enemy : ScriptableObject
     public float wallCheckDist = 0.25f;
     public float ledgeCheckDist = 0.35f;
 
-    public float minAgroRangeDist = 2f;
-    public Vector2 maxAgroRangeDist = new Vector2(5,2);
+    public Vector2 minAgroRangeDist = new Vector2(2, 2);
+    public Vector2 maxAgroRangeDist = new Vector2(5, 2);
 
     public float meleeAttackRange = 1f;
 

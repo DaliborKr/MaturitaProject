@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCheckDist: 0.5
   ledgeCheckDist: 0.5
-  minAgroRangeDist: 2
-  maxAgroRangeDist: {x: 10, y: 4}
+  minAgroRangeDist: {x: 30, y: 10}
+  maxAgroRangeDist: {x: 40, y: 12}
+  meleeAttackRange: 2
   maxHealth: 100
   whatIsGround:
     serializedVersion: 2
