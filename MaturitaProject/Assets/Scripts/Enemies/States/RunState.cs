@@ -9,6 +9,8 @@ public class RunState : State
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
     protected bool isInMeleeAttackRange;
+    protected bool isDetectingLedge;
+    protected bool isDetectingWall;
 
     public RunState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_RunState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
@@ -21,6 +23,8 @@ public class RunState : State
 
         isInMinAgroRange = enemy.CheckMinAgroRange();
         isInMaxAgroRange = enemy.CheckMaxAgroRange();
+        isDetectingLedge = enemy.CheckLedge();
+        isDetectingWall = enemy.CheckWall();
         isInMeleeAttackRange = enemy.CheckPlayerInMeleeAttackRange();
     }
 

@@ -180,7 +180,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
             currentNumberOfJumps--;
-            Debug.Log("normal Jump");
             isAttemptingToJump = false;
         }
         
@@ -192,7 +191,6 @@ public class PlayerController : MonoBehaviour
 
             isWallsliding = false;
             currentNumberOfJumps--;
-            Debug.Log("Wall hop");
             isAttemptingToJump = false;
         }
         else if (canJump && isWallsliding  && movementInputValue != 0)
@@ -203,7 +201,6 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, wallJumpForceStraight);
                 Vector2 newWallJumpForce = new Vector2(180 * -facingDir, 0);
                 rb.AddForce(newWallJumpForce, ForceMode2D.Impulse);
-                Debug.Log("Wall jump straight");
                 isAttemptingToJump = false;
             }
             else
@@ -212,7 +209,6 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(wallJumpForce * -facingDir, wallJumpForceStraight);
                 FlipWallJumpingCharacter();
                 iswallJumping = true;
-                Debug.Log("Wall jump side");
                 isAttemptingToJump = false;
             }
 

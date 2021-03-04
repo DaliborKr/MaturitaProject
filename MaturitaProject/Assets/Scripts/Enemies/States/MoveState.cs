@@ -7,7 +7,7 @@ public class MoveState : State
     protected D_MoveState stateData;
 
     protected bool isDetectingWall;
-    protected bool isDecetingLedge;
+    protected bool isDetectingLedge;
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
 
@@ -20,7 +20,7 @@ public class MoveState : State
     {
         base.DoChecks();
 
-        isDecetingLedge = enemy.CheckLedge();
+        isDetectingLedge = enemy.CheckLedge();
         isDetectingWall = enemy.CheckWall();
         isInMinAgroRange = enemy.CheckMinAgroRange();
         isInMaxAgroRange = enemy.CheckMaxAgroRange();

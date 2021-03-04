@@ -39,6 +39,11 @@ public class E1_RunState : RunState
             }
         }
 
+        if (isDetectingWall || !isDetectingLedge)
+        {
+            enemyType.idleState.SetFlipAfterIdle(true);
+            stateMachine.ChangeState(enemyType.idleState);
+        }
         if (isInMeleeAttackRange)
         {
             stateMachine.ChangeState(enemyType.meleeAttackState);
