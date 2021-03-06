@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 43b329cf61cd349468b5fe3ca0c2f167
+guid: aa343d5cf6ebd5847ab9dbc09d7d9a14
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1465442114630514430
-    second: Idle_SpriteSheet_0
+      213: 3870849641126200315
+    second: FireProjectile_SpriteSheet_0
   - first:
-      213: 291016356998008702
-    second: Idle_SpriteSheet_1
+      213: 5262936955843700359
+    second: FireProjectile_SpriteSheet_1
   - first:
-      213: 5460086296807752342
-    second: Idle_SpriteSheet_2
+      213: 715087394691244043
+    second: FireProjectile_SpriteSheet_2
   - first:
-      213: 7173244315590077772
-    second: Idle_SpriteSheet_3
+      213: -2440135161667314586
+    second: FireProjectile_SpriteSheet_3
+  - first:
+      213: -4428859315795109208
+    second: FireProjectile_SpriteSheet_4
+  - first:
+      213: -7944002892702248946
+    second: FireProjectile_SpriteSheet_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -99,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_SpriteSheet_0
+      name: FireProjectile_SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2090d863924b9abe0800000000000000
-      internalID: -1465442114630514430
+      spriteID: bf3864e6d3508b530800000000000000
+      internalID: 3870849641126200315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_SpriteSheet_1
+      name: FireProjectile_SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -134,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7fc1b6b5d5e90400800000000000000
-      internalID: 291016356998008702
+      spriteID: 786e650f645b90940800000000000000
+      internalID: 5262936955843700359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_SpriteSheet_2
+      name: FireProjectile_SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -155,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6924434ee8f16cb40800000000000000
-      internalID: 5460086296807752342
+      spriteID: b006eef52308ce900800000000000000
+      internalID: 715087394691244043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_SpriteSheet_3
+      name: FireProjectile_SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -176,8 +182,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4d26d513bb7c8360800000000000000
-      internalID: 7173244315590077772
+      spriteID: 66c11e4bff5e22ed0800000000000000
+      internalID: -2440135161667314586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireProjectile_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa5ad9dae78982c0800000000000000
+      internalID: -4428859315795109208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireProjectile_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e009ecd457b31c190800000000000000
+      internalID: -7944002892702248946
       vertices: []
       indices: 
       edges: []

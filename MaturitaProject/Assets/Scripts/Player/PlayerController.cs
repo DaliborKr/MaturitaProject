@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
             if (facingDir == inputDir)
             {
                 rb.velocity = new Vector2(rb.velocity.x, wallJumpForceStraight);
-                Vector2 newWallJumpForce = new Vector2(180 * -facingDir, 0);
+                Vector2 newWallJumpForce = new Vector2(100 * -facingDir, 0);
                 rb.AddForce(newWallJumpForce, ForceMode2D.Impulse);
                 isAttemptingToJump = false;
             }
