@@ -165,7 +165,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(rangeCheckAttack1.position, radiusAttack1, whatIsDamageable);
 
-        AttackDetails attackDetails = new AttackDetails(damageNumberAttack1, pc.transform.position);
+        AttackDetails attackDetails = new AttackDetails(damageNumberAttack1, pc.transform.position, pc.GetFacingDir());
 
         foreach (Collider2D collider in objects)
         {

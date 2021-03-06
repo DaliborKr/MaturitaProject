@@ -16,9 +16,16 @@ public class AttackDetails
         private set;
     }
 
-    public AttackDetails(int damageNumber, Vector2 position)
+    public int facingDir
+    {
+        get;
+        private set;
+    }
+
+    public AttackDetails(int damageNumber, Vector2 position, int facinfDir)
     {
         this.damageNumber = damageNumber;
         this.position = position;
+        this.facingDir = facinfDir;
     }
 }

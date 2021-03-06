@@ -11,8 +11,6 @@ public class MeleeAttackState : AttackState
     public MeleeAttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_MeleeAttackState stateData) : base(stateMachine, enemy, animatorNameBool, attackPoint)
     {
         this.stateData = stateData;
-
-        attackDetails = new AttackDetails(stateData.damageNumber, enemy.aliveGameObject.transform.position);
     }
 
     public override void DoChecks()
@@ -23,6 +21,7 @@ public class MeleeAttackState : AttackState
     public override void Enter()
     {
         base.Enter();
+        attackDetails = new AttackDetails(stateData.damageNumber, enemy.aliveGameObject.transform.position, enemy.facingDir);
     }
 
     public override void Exit()
@@ -53,10 +52,7 @@ public class MeleeAttackState : AttackState
 
         foreach (Collider2D collider in detectedObjects)
         {
-            Debug.Log("melo by byt au");
-
-
-            collider.transform.parent.SendMessage("GetDamage", attackDetails);
+            collider.transform.SendMessage("GetDamage", attackDetails);
         }
     }
 }

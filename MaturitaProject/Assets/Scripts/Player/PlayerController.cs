@@ -407,6 +407,22 @@ public class PlayerController : MonoBehaviour
         isFacingRight = !isFacingRight;
     }
 
+    public void AddForceWhenHitted(bool toRight, Vector2 hitForce)
+    {
+        isOnGround = false;
+        currentNumberOfJumps = maxNumberOfJumps;
+        currentNumberOfJumps--;
+
+        if (toRight)
+        {
+            rb.velocity = new Vector2(hitForce.x * 1, hitForce.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(hitForce.x * -1, hitForce.y);
+        }
+    }
+
         private void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
