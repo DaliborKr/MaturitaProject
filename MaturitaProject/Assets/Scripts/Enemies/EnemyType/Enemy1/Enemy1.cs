@@ -34,6 +34,12 @@ public class Enemy1 : Enemy
         private set;
     }
 
+    public E1_DeadState deadState
+    {
+        get;
+        private set;
+    }
+
     [SerializeField]
     private D_IdleState idleStateData;
     [SerializeField]
@@ -57,6 +63,7 @@ public class Enemy1 : Enemy
         detectPlayerState = new E1_DetectPlayerState(stateMachineEnemy, this, "detectPlayer", detectPlayerStateData, this);
         meleeAttackState = new E1_MeleeAttackState(stateMachineEnemy, this, "meleeAttack", meleeAttackPoint, meleeAttackStateData, this);
         runState = new E1_RunState(stateMachineEnemy, this, "run", runStateData, this);
+        deadState = new E1_DeadState(stateMachineEnemy, this, "dead", this);
 
         stateMachineEnemy.Initialize(moveState);
     }

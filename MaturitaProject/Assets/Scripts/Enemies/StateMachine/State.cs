@@ -11,6 +11,8 @@ public class State
 
     protected string animatiorNameBool;
 
+    protected bool isDead = false;
+
     public State(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool)
     {
         this.stateMachine = stateMachine;
@@ -27,7 +29,6 @@ public class State
 
     public virtual void LogicUpdate()
     {
-
     }
 
     public virtual void PhysicsUpdate()
@@ -42,6 +43,6 @@ public class State
 
     public virtual void DoChecks()
     {
-
+        isDead = enemy.CheckPlayerRunOutOfLives();
     }
 }

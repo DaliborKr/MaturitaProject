@@ -53,6 +53,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform attackPoint;
 
+    [SerializeField]
+    private GameObject coin;
+
     private Vector2 velocityHolder;
 
     public virtual void Start()
@@ -82,13 +85,14 @@ public class Enemy : MonoBehaviour
     public virtual void GetDamage(AttackDetails attackDetails)
     {
         curentHealth -= attackDetails.damageNumber;
-
+        /*
         Debug.Log("au");
 
         if (curentHealth <= 0)
         {
             Die();
         }
+        */
     }
 
     public virtual void Die()
@@ -127,7 +131,32 @@ public class Enemy : MonoBehaviour
     {
         return Physics2D.OverlapCircle(attackPoint.position, enemyData.meleeAttackRange, enemyData.whatIsPlayer); 
     }
-        
+
+    public virtual bool CheckPlayerRunOutOfLives()
+    {
+
+        if (curentHealth <= 0)
+        {
+            Debug.Log("umrel");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void InstantiateCoins()
+    {
+        int numberOfCoins = Random.Range(3, 5);
+
+        for (int i = 0; i < numberOfCoins; i++)
+        {
+            Instantiate(coin, aliveGameObject.transform.position, aliveGameObject.transform.rotation);
+        }
+
+
+    }
 
     public virtual void Flip()
     {

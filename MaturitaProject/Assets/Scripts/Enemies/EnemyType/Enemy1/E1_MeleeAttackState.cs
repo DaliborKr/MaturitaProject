@@ -35,6 +35,11 @@ public class E1_MeleeAttackState : MeleeAttackState
     {
         base.LogicUpdate();
 
+        if (isDead)
+        {
+            stateMachine.ChangeState(enemyType.deadState);
+        }
+
         if (animationEnded)
         {
             if (isInMinAgroRange)

@@ -30,6 +30,11 @@ public class E1_RunState : RunState
     {
         base.LogicUpdate();
 
+        if (isDead)
+        {
+            stateMachine.ChangeState(enemyType.deadState);
+        }
+
         if (isInMinAgroRange)
         {
             if ((enemy.player.transform.position.x < enemy.aliveGameObject.transform.position.x && enemy.facingDir == 1) || (enemy.player.transform.position.x > enemy.aliveGameObject.transform.position.x && enemy.facingDir == -1))

@@ -27,6 +27,10 @@ public class E1_DetectPlayerState : DetectPlayerState
     {
         base.LogicUpdate();
 
+        if (isDead)
+        {
+            stateMachine.ChangeState(enemyType.deadState);
+        }
         if (isInMeleeAttackRange)
         {
             stateMachine.ChangeState(enemyType.meleeAttackState);
