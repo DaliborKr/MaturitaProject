@@ -113,7 +113,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3208257660614222274}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1939593
+  m_Radius: 0.239125
 --- !u!58 &6639385805737285655
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,13 +131,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 3208257660614222274}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9d1b034d719c79d4b8aaec71120a39f8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.19055296
+  m_Radius: 0.15427412
 --- !u!50 &3208257660614222276
 Rigidbody2D:
   serializedVersion: 4
@@ -172,3 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 50
+  hitBoxRadius: 0.2
+  isPlayer:
+    serializedVersion: 2
+    m_Bits: 512

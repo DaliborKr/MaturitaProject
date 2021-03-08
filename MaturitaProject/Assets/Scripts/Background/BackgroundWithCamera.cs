@@ -23,7 +23,7 @@ public class BackgroundWithCamera : MonoBehaviour
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
         float dist = (cam.transform.position.x * parallaxEffect);
 
-        transform.position = new Vector3(startpos + dist, cam.transform.position.y, transform.position.z);
+        transform.position = new Vector3(startpos + dist, cam.transform.position.y + 0.5f, transform.position.z);
 
         if (temp > startpos + length)
         {

@@ -3,54 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerGetDamage : MonoBehaviour
+public class HealthImageManager : MonoBehaviour
 {
-    private int currentHealth;
-
-    private PlayerController pc;
-
-    public Vector2 hitForce;
-
+    public int currentHealth;
     public int maxHealth;
 
     public Image[] lives;
-
     public Sprite fullHealthSprite;
     public Sprite emptyHealthSprite;
     public Sprite halfFullHealthSprite;
 
-    private void Start()
-    {
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
-        currentHealth = maxHealth;
-    }
 
-    public void GetDamage(AttackDetails attackDetails)
-    { 
-        currentHealth -= attackDetails.damageNumber;
-
-        SetHealthImages();
-
-
-        if (attackDetails.facingDir == 1)
-        {
-            pc.AddForceWhenHitted(true, hitForce);
-            Debug.Log("hop pravo");
-        }
-        else if(attackDetails.facingDir == -1)
-        {
-            pc.AddForceWhenHitted(false, hitForce);
-            Debug.Log("hop levo");
-        }
-
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Som mrtvy");
-            Destroy(gameObject);
-        }
-    }
-
-    public void SetHealthImages()
+    // Update is called once per frame
+    void Update()
     {
         if (currentHealth > maxHealth)
         {
@@ -59,9 +24,9 @@ public class PlayerGetDamage : MonoBehaviour
 
         for (int i = 0; i < lives.Length; i++)
         {
-            if (i * 2 < currentHealth)
+            if (i*2 < currentHealth)
             {
-                if (currentHealth % 2 == 1 && i * 2 + 1 == currentHealth)
+                if (currentHealth%2 == 1 && i*2+1 == currentHealth)
                 {
                     lives[i].sprite = halfFullHealthSprite;
                 }
@@ -71,7 +36,7 @@ public class PlayerGetDamage : MonoBehaviour
                 }
 
             }
-            else
+            else 
             {
                 lives[i].sprite = emptyHealthSprite;
             }
@@ -89,7 +54,7 @@ public class PlayerGetDamage : MonoBehaviour
             }
 
 
-            if (i < maxHealth / 2 + oddHelp)
+            if (i < maxHealth/2 + oddHelp)
             {
                 lives[i].enabled = true;
             }
