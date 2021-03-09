@@ -13,6 +13,11 @@ public class PlayerGetDamage : MonoBehaviour
 
     public int maxHealth;
 
+    private GameObject deadFade;
+    private Animator deadTrasition;
+
+    public GameObject coin;
+
     public Image[] lives;
 
     public Sprite fullHealthSprite;
@@ -22,6 +27,8 @@ public class PlayerGetDamage : MonoBehaviour
     private void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        deadFade = GameObject.Find("DeadFade");
+        deadTrasition = deadFade.GetComponent<Animator>();
         currentHealth = maxHealth;
     }
 
@@ -47,6 +54,14 @@ public class PlayerGetDamage : MonoBehaviour
         {
             Debug.Log("Som mrtvy");
             Destroy(gameObject);
+            for (int i = 0; i < 10; i++)
+            {
+                Instantiate(coin, transform.position, transform.rotation);
+            }
+            Time.timeScale = (0.5f);
+            Time.fixedDeltaTime = Time.timeScale * 0.01f;
+            deadTrasition.enabled = true;
+
         }
     }
 

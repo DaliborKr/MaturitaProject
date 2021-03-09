@@ -17,7 +17,7 @@ MonoBehaviour:
   minAgroRangeDist: {x: 10, y: 3}
   maxAgroRangeDist: {x: 13, y: 4}
   meleeAttackRange: 0.9
-  maxHealth: 100
+  maxHealth: 15
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
