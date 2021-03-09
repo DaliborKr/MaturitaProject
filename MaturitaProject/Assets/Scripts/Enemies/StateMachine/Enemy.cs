@@ -154,8 +154,16 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(coin, aliveGameObject.transform.position, aliveGameObject.transform.rotation);
         }
+    }
 
+    public int GetMaxHealth()
+    {
+        return enemyData.maxHealth;
+    }
 
+    public int GetCurrentHealth()
+    {
+        return curentHealth;
     }
 
     public virtual void Flip()
