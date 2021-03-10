@@ -29,6 +29,8 @@ public class PlayerCombatController : MonoBehaviour
     private float radiusAttack1;
     private float lastInputTime = Mathf.NegativeInfinity;
     private float lastFireTime = Mathf.NegativeInfinity;
+    private float switchTime = 0.2f;
+    private float lastTimeSwitched = Mathf.NegativeInfinity;
 
     [SerializeField]
     private Transform rangeCheckAttack1;
@@ -60,8 +62,9 @@ public class PlayerCombatController : MonoBehaviour
 
     private void CheckCombatInput()
     {
-        if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0))
+        if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0) && Time.time >= lastTimeSwitched + switchTime)
         {
+            lastTimeSwitched = Time.time;
             isMelee = !isMelee;
         }
         if (Input.GetMouseButtonDown(0))
