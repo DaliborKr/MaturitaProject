@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
+    public Transform[] firePoints;
+
     public int facingDir
     {
         get;
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Transform playerMaxCheckAgroRange;
     [SerializeField]
-    private Transform attackPoint;
+    protected Transform attackPoint;
 
     [SerializeField]
     private GameObject coin;
@@ -153,6 +155,14 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < numberOfCoins; i++)
         {
             Instantiate(coin, aliveGameObject.transform.position, aliveGameObject.transform.rotation);
+        }
+    }
+
+    public void InstantiateProjectiles(GameObject[] projectilePrefab)
+    {
+        for (int i = 0; i < firePoints.Length; i++)
+        {
+            Instantiate(projectilePrefab[i], firePoints[i].position, firePoints[i].rotation);
         }
     }
 

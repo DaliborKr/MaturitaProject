@@ -43,6 +43,10 @@ public class E2_RunState : RunState
                 enemy.rb.velocity *= -1;
             }
         }
+        if (isInMeleeAttackRange)
+        {
+            stateMachine.ChangeState(enemyType.fireAttackState);
+        }
 
         if (isDetectingWall || !isDetectingLedge)
         {

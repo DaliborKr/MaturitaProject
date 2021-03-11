@@ -16,7 +16,7 @@ MonoBehaviour:
   ledgeCheckDist: 0.35
   minAgroRangeDist: {x: 10, y: 3}
   maxAgroRangeDist: {x: 13, y: 4}
-  meleeAttackRange: 0
+  meleeAttackRange: 5
   maxHealth: 14
   whatIsGround:
     serializedVersion: 2

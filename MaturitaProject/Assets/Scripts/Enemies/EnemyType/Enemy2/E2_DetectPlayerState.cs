@@ -19,6 +19,8 @@ public class E2_DetectPlayerState : DetectPlayerState
     public override void Enter()
     {
         base.Enter();
+
+        enemy.SetVelocity(0f);
     }
 
     public override void Exit()

@@ -34,6 +34,12 @@ public class Enemy2 : Enemy
         private set;
     }
 
+    public E2_FireAttackState fireAttackState
+    {
+        get;
+        private set;
+    }
+
     [SerializeField]
     private D_IdleState idleStateData;
     [SerializeField]
@@ -42,6 +48,8 @@ public class Enemy2 : Enemy
     private D_DetectPlayerState detectPlayerStateData;
     [SerializeField]
     private D_RunState runStateData;
+    [SerializeField]
+    private D_FireAttackState fireAttackStateData;
 
     public override void Start()
     {
@@ -52,6 +60,7 @@ public class Enemy2 : Enemy
         detectPlayerState = new E2_DetectPlayerState(stateMachineEnemy, this, "detectPlayer", detectPlayerStateData, this);
         runState = new E2_RunState(stateMachineEnemy, this, "run", runStateData, this);
         deadState = new E2_DeadState(stateMachineEnemy, this, "dead", this);
+        fireAttackState = new E2_FireAttackState(stateMachineEnemy, this, "fire", attackPoint, fireAttackStateData, this);
 
         stateMachineEnemy.Initialize(moveState);
     }

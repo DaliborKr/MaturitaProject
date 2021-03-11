@@ -52,7 +52,7 @@ public class Enemy1 : Enemy
     private D_RunState runStateData;
 
     [SerializeField]
-    private Transform meleeAttackPoint;
+    private Transform attackPointType;
 
     public override void Start()
     {
@@ -61,7 +61,7 @@ public class Enemy1 : Enemy
         moveState = new E1_MoveState(stateMachineEnemy, this, "move", moveStateData, this);
         idleState = new E1_IdleState(stateMachineEnemy, this, "idle", idleStateData, this);
         detectPlayerState = new E1_DetectPlayerState(stateMachineEnemy, this, "detectPlayer", detectPlayerStateData, this);
-        meleeAttackState = new E1_MeleeAttackState(stateMachineEnemy, this, "meleeAttack", meleeAttackPoint, meleeAttackStateData, this);
+        meleeAttackState = new E1_MeleeAttackState(stateMachineEnemy, this, "meleeAttack", attackPointType, meleeAttackStateData, this);
         runState = new E1_RunState(stateMachineEnemy, this, "run", runStateData, this);
         deadState = new E1_DeadState(stateMachineEnemy, this, "dead", this);
 
@@ -77,7 +77,7 @@ public class Enemy1 : Enemy
     {
         base.OnDrawGizmos();
 
-        Gizmos.DrawWireSphere(meleeAttackPoint.position, meleeAttackStateData.attackRadius);
+        Gizmos.DrawWireSphere(attackPointType.position, meleeAttackStateData.attackRadius);
     }
 
 }
