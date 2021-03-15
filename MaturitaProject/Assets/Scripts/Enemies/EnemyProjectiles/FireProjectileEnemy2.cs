@@ -8,7 +8,15 @@ public class FireProjectileEnemy2 : FireProjetileEnemy
     {
         base.SetProjectileDirectory();
 
-        fireDirection = startPos.normalized;
-        fireDirection.x = 0;
+        
+
+        if (pcPos.x < startPos.x)
+        {
+            fireDirection = new Vector2(0.4f, 1);
+        }
+        else
+        {
+            fireDirection = new Vector2(-0.4f, 1);
+        }
     }
 }

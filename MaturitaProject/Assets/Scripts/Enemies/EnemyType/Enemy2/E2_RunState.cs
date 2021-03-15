@@ -35,29 +35,37 @@ public class E2_RunState : RunState
             stateMachine.ChangeState(enemyType.deadState);
         }
 
-        if (isInMinAgroRange)
+        if (isInMinAgroRange && (isDetectingWall || !isDetectingLedge))
         {
-            if ((enemy.player.transform.position.x < enemy.aliveGameObject.transform.position.x && enemy.facingDir == 1) || (enemy.player.transform.position.x > enemy.aliveGameObject.transform.position.x && enemy.facingDir == -1))
+            stateMachine.ChangeState(enemyType.idleState);
+        }
+
+        else if (isInMinAgroRange)
+        {
+            if ((enemy.player.transform.position.x > enemy.aliveGameObject.transform.position.x && enemy.facingDir == 1) || (enemy.player.transform.position.x < enemy.aliveGameObject.transform.position.x && enemy.facingDir == -1))
             {
                 enemy.Flip();
                 enemy.rb.velocity *= -1;
             }
         }
-        if (isInMeleeAttackRange)
+        
+        else if (isInMeleeAttackRange && !isInMinAgroRange)
         {
             stateMachine.ChangeState(enemyType.fireAttackState);
         }
+        
 
-        if (isDetectingWall || !isDetectingLedge)
+        else if (isDetectingWall || !isDetectingLedge)
         {
             enemyType.idleState.SetFlipAfterIdle(true);
             stateMachine.ChangeState(enemyType.idleState);
         }
 
-        if (!isInMaxAgroRange)
+        else if (!isInMaxAgroRange)
         {
             stateMachine.ChangeState(enemyType.detectPlayerState);
         }
+        //Debug.Log("Run");
     }
 
     public override void PhysicsUpdate()

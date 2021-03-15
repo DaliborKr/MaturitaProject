@@ -51,6 +51,11 @@ public class Enemy2 : Enemy
     [SerializeField]
     private D_FireAttackState fireAttackStateData;
 
+    [SerializeField]
+    private Transform ledgeBehindCheck;
+    [SerializeField]
+    private Transform wallBehindCheck;
+
     public override void Start()
     {
         base.Start();
@@ -68,5 +73,23 @@ public class Enemy2 : Enemy
     public override void Update()
     {
         base.Update();
+    }
+
+    public virtual bool CheckWallBehind()
+    {
+        return Physics2D.Raycast(wallBehindCheck.position, aliveGameObject.transform.right, enemyData.wallCheckDist, enemyData.whatIsGround);
+    }
+
+    public virtual bool CheckLedgeBehind()
+    {
+        return Physics2D.Raycast(ledgeBehindCheck.position, Vector2.down, enemyData.ledgeCheckDist, enemyData.whatIsGround);
+    }
+
+    public override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Gizmos.DrawLine(wallBehindCheck.position, wallBehindCheck.position + (Vector3)(Vector2.right * facingDir * enemyData.wallCheckDist));
+        Gizmos.DrawLine(ledgeBehindCheck.position, ledgeBehindCheck.position + (Vector3)(Vector2.down * enemyData.ledgeCheckDist));
     }
 }

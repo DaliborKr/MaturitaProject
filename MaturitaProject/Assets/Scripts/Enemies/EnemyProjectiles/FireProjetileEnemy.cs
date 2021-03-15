@@ -11,6 +11,7 @@ public class FireProjetileEnemy : MonoBehaviour
     protected Vector2 fireDirection;
     protected Vector2 startPos;
     protected Vector2 pcPos;
+    protected Rigidbody2D rb;
 
     [SerializeField]
     protected int damageNumberFireProjectile1;
@@ -23,14 +24,17 @@ public class FireProjetileEnemy : MonoBehaviour
     public void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
         pcPos = new Vector2(pc.transform.position.x, pc.transform.position.y);
+        Debug.Log(pcPos);
         SetProjectileDirectory();
     }
 
     public void FixedUpdate()
     {
         transform.Translate(fireDirection * projectileSpeed * Time.deltaTime);
+
         CheckProjectileHitbox();
     }
 

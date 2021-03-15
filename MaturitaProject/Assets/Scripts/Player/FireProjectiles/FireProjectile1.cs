@@ -33,7 +33,7 @@ public class FireProjectile1 : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(fireDirection * projectileSpeed * Time.deltaTime);
         CheckProjectileHitbox();

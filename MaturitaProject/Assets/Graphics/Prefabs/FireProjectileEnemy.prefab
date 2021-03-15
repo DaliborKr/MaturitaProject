@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3185221344106601946}
   - component: {fileID: 2135699978568055070}
   - component: {fileID: 2633940092750967369}
+  - component: {fileID: -3803954106452606231}
   m_Layer: 13
   m_Name: FireProjectileEnemy
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1599245541
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3870849641126200315, guid: aa343d5cf6ebd5847ab9dbc09d7d9a14,
+  m_Sprite: {fileID: 7103559038122868756, guid: fcc62eb515ade9c4c9cd792a46914d4f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.22379196
+  m_Radius: 0.12312864
 --- !u!50 &2135699978568055070
 Rigidbody2D:
   serializedVersion: 4
@@ -137,6 +138,25 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
-  damageNumberFireProjectile1: 10
-  radiusFireProjectile: 0.3
+  damageNumberFireProjectile1: 4
+  radiusFireProjectile: 0.2
   projectileSpeed: 10
+--- !u!95 &-3803954106452606231
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131168444913614519}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7090e62d02aa2a84d89f590640d9c079, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -42,7 +42,8 @@ public class E2_FireAttackState : FireAttackState
 
         if (animationEnded)
         {
-            if (isInMinAgroRange)
+            Debug.Log("Prehodil sem");
+            if (isInMaxAgroRange)
             {
                 stateMachine.ChangeState(enemyType.detectPlayerState);
             }
@@ -51,8 +52,10 @@ public class E2_FireAttackState : FireAttackState
                 stateMachine.ChangeState(enemyType.idleState);
             }
         }
-
-        Debug.Log(animationEnded);
+        
+        //Debug.Log("Fire");
+        //Debug.Log("Ended anim: " + animationEnded);
+        
     }
 
     public override void PhysicsUpdate()

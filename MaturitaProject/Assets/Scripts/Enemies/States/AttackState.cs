@@ -8,6 +8,7 @@ public class AttackState : State
 
     protected bool animationEnded;
     protected bool isInMinAgroRange;
+    protected bool isInMaxAgroRange;
 
     public AttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint) : base(stateMachine, enemy, animatorNameBool)
     {
@@ -19,6 +20,7 @@ public class AttackState : State
         base.DoChecks();
 
         isInMinAgroRange = enemy.CheckMinAgroRange();
+        isInMaxAgroRange = enemy.CheckMaxAgroRange();
     }
 
     public override void Enter()
@@ -53,5 +55,6 @@ public class AttackState : State
     public virtual void FinishAttack()
     {
         animationEnded = true;
+        Debug.Log("Je konec");
     }
 }

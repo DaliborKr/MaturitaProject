@@ -35,7 +35,7 @@ public class E2_MoveState : MoveState
             stateMachine.ChangeState(enemyType.deadState);
         }
 
-        if (isInMinAgroRange)
+        if (isInMaxAgroRange)
         {
             stateMachine.ChangeState(enemyType.detectPlayerState);
         }
@@ -49,6 +49,7 @@ public class E2_MoveState : MoveState
             enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
         }
+        //Debug.Log("Move");
     }
 
     public override void PhysicsUpdate()
