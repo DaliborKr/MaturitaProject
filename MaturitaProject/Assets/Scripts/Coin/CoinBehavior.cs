@@ -13,6 +13,15 @@ public class CoinBehavior : MonoBehaviour
 
     public LayerMask isPlayer;
 
+    public CoinActiveManager coinActiveManager;
+
+    
+    private void Awake()
+    {
+        coinActiveManager.SetActiveC(true);
+    }
+    
+
     private void Start()
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<ScoreText>();
@@ -29,7 +38,9 @@ public class CoinBehavior : MonoBehaviour
         {
             scoreText.IncreaseScore(scoreValue);
 
-            Destroy(gameObject);
+            coinActiveManager.SetActiveC(false);
+
+            //Destroy(gameObject);
         }
     }
 

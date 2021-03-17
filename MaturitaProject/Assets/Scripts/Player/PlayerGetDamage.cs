@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerGetDamage : MonoBehaviour
 {
-    private int currentHealth;
+    public int currentHealth;
 
     private PlayerController pc;
 
@@ -32,12 +32,14 @@ public class PlayerGetDamage : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    private void Update()
+    {
+        SetHealthImages();
+    }
+
     public void GetDamage(AttackDetails attackDetails)
     { 
         currentHealth -= attackDetails.damageNumber;
-
-        SetHealthImages();
-
 
         if (attackDetails.facingDir == 1)
         {
@@ -52,8 +54,8 @@ public class PlayerGetDamage : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Som mrtvy");
             Destroy(gameObject);
+
             for (int i = 0; i < 10; i++)
             {
                 Instantiate(coin, transform.position, transform.rotation);
@@ -61,7 +63,6 @@ public class PlayerGetDamage : MonoBehaviour
             Time.timeScale = (0.5f);
             Time.fixedDeltaTime = Time.timeScale * 0.01f;
             deadTrasition.enabled = true;
-
         }
     }
 

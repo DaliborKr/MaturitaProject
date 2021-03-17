@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float lastDashTime = -10000000;
     private float jumpDelayLeft;
 
-    public int currentNumberOfJumps;
+    private int currentNumberOfJumps;
     private int facingDir;
     private int inputDir;
 
@@ -18,10 +18,10 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool canJump;
-    public bool isOnGround;
+    private bool isOnGround;
     private bool wasOnGround;
     private bool isTouchingWall;
-    public bool isWallsliding;
+    private bool isWallsliding;
     private bool flippedInAir;
     private bool iswallJumping;
     private bool isDashing;
@@ -45,10 +45,15 @@ public class PlayerController : MonoBehaviour
     public float dashCooldown;
     public float jumpDelay;
 
+    public bool dashAvaiable;
+    public bool wallJumpAvaiable;
+
     public int maxNumberOfJumps = 1;
 
     public Vector2 wallHopDir;
     public Vector2 wallJumpDir;
+
+    public Vector3 currentSpawnPos;
 
     public Transform groundCheck;
     public Transform wallCheck;
@@ -193,7 +198,7 @@ public class PlayerController : MonoBehaviour
             currentNumberOfJumps--;
             isAttemptingToJump = false;
         }
-        else if (canJump && isWallsliding  && movementInputValue != 0)
+        else if (canJump && isWallsliding  && movementInputValue != 0 && wallJumpAvaiable)
         {
             
             if (facingDir == inputDir)
@@ -220,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (isFirstDashInAir)
+        if (isFirstDashInAir && dashAvaiable)
         {
             isDashing = true;
             dashingTimeLeft = dashingTime;
