@@ -11,19 +11,19 @@ public class ShopItemMultipleJump : ShopItem
     {
         base.AdminItem();
 
-        if (pc.maxNumberOfJumps == numberOfJumpsUpgrade)
+        if (pc.maxNumberOfJumps >= numberOfJumpsUpgrade)
         {
             buttonItem.enabled = false;
             imageItem.sprite = ownedItem;
             pricePanel.SetActive(false);
         }
-        else if (pc.maxNumberOfJumps+1 == numberOfJumpsUpgrade && score < price)
+        else if (pc.maxNumberOfJumps+1 == numberOfJumpsUpgrade && scoreText.score < price)
         {
             buttonItem.enabled = false;
             imageItem.sprite = avaiableItemNoMoney;
             pricePanel.SetActive(true);
         }
-        else if (pc.maxNumberOfJumps + 1 == numberOfJumpsUpgrade && score >= price)
+        else if (pc.maxNumberOfJumps + 1 == numberOfJumpsUpgrade && scoreText.score >= price)
         {
             buttonItem.enabled = true;
             imageItem.sprite = avaiableItemEnoughMoney;
@@ -35,5 +35,13 @@ public class ShopItemMultipleJump : ShopItem
             imageItem.sprite = unavaiableItem;
             pricePanel.SetActive(false);
         }
+    }
+
+    public void ButtonClickedMultipleJumpUpgrade()
+    {
+        pc.maxNumberOfJumps = numberOfJumpsUpgrade;
+        scoreText.DecreaseScore(price);
+
+        SavePlayerAfterShopping();
     }
 }

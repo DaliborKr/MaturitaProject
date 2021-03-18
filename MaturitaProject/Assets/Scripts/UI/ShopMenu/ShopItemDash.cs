@@ -16,17 +16,25 @@ public class ShopItemDash : ShopItem
             imageItem.sprite = ownedItem;
             pricePanel.SetActive(false);
         }
-        else if (pc.dashAvaiable == false && score < price)
+        else if (pc.dashAvaiable == false && scoreText.score < price)
         {
             buttonItem.enabled = false;
             imageItem.sprite = avaiableItemNoMoney;
             pricePanel.SetActive(true);
         }
-        else if (pc.dashAvaiable == false && score >= price)
+        else if (pc.dashAvaiable == false && scoreText.score >= price)
         {
             buttonItem.enabled = true;
             imageItem.sprite = avaiableItemEnoughMoney;
             pricePanel.SetActive(true);
         }
+    }
+
+    public void ButtonClickedDashUpgrade()
+    {
+        pc.dashAvaiable = true;
+        scoreText.DecreaseScore(price);
+
+        SavePlayerAfterShopping();
     }
 }

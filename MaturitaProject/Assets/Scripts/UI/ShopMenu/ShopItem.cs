@@ -10,8 +10,6 @@ public class ShopItem : MonoBehaviour
     protected PlayerGetDamage playerGetDamage;
     public ScoreText scoreText;
 
-    protected int score;
-
     public GameObject pricePanel;
     public Image imageItem;
     public Button buttonItem;
@@ -22,12 +20,15 @@ public class ShopItem : MonoBehaviour
     public Sprite avaiableItemEnoughMoney;
     public Sprite avaiableItemNoMoney;
 
+    protected SavePlayerManager savePlayerManager;
+
     void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         playerCombatController = GameObject.Find("Player").GetComponent<PlayerCombatController>();
         playerGetDamage = GameObject.Find("Player").GetComponent<PlayerGetDamage>();
-        score = scoreText.score;
+        savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
+
         buttonItem.enabled = false;
         pricePanel.SetActive(false);
         description.enabled = false;
@@ -41,6 +42,11 @@ public class ShopItem : MonoBehaviour
     public virtual void AdminItem()
     {
 
+    }
+
+    public void SavePlayerAfterShopping()
+    {
+        savePlayerManager.SavePlayer();
     }
 
     public void EnableDestriptionText()

@@ -24,6 +24,9 @@ public class PlayerGetDamage : MonoBehaviour
     public Sprite emptyHealthSprite;
     public Sprite halfFullHealthSprite;
 
+    public float delaySpikesDamage;
+    private float lastTimeSpikesDamage = Mathf.NegativeInfinity;
+
     private void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -54,16 +57,37 @@ public class PlayerGetDamage : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
-
-            for (int i = 0; i < 10; i++)
-            {
-                Instantiate(coin, transform.position, transform.rotation);
-            }
-            Time.timeScale = (0.5f);
-            Time.fixedDeltaTime = Time.timeScale * 0.01f;
-            deadTrasition.enabled = true;
+            SetHealthImages();
+            Die();
         }
+    }
+
+    public void GetDamageSpikes(AttackDetails attackDetails)
+    {
+        if (Time.time >= lastTimeSpikesDamage + delaySpikesDamage)
+        {
+            lastTimeSpikesDamage = Time.time;
+            currentHealth -= attackDetails.damageNumber;
+
+            if (currentHealth <= 0)
+            {
+                SetHealthImages();
+                Die();
+            }
+        }    
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+
+        for (int i = 0; i < 10; i++)
+        {
+            Instantiate(coin, transform.position, transform.rotation);
+        }
+        Time.timeScale = (0.5f);
+        Time.fixedDeltaTime = Time.timeScale * 0.01f;
+        deadTrasition.enabled = true;
     }
 
     public void SetHealthImages()

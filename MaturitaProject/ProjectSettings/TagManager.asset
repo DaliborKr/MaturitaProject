@@ -21,7 +21,7 @@ TagManager:
   - PlayerProjectile
   - Coin
   - EnemyProjectile
-  - 
+  - DragonsHead
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 2588675051
+    locked: 0
+  - name: EnemyProjectile
+    uniqueID: 3751080509
     locked: 0
   - name: Enemy
     uniqueID: 1599245541

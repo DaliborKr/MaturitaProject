@@ -18,4 +18,17 @@ public class ScoreText : MonoBehaviour
         score += scoreValue;
         scoreText.text = "SCORE: " + score;
     }
+
+    public void DecreaseScore(int scoreValue)
+    {
+        if ((score - scoreValue) < 0)
+        {
+            score = 0;
+        }
+        else
+        {
+            score -= scoreValue;
+        }
+        scoreText.text = "SCORE: " + score;
+    }
 }

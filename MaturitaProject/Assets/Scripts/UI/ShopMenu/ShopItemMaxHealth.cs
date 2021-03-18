@@ -18,13 +18,13 @@ public class ShopItemMaxHealth : ShopItem
             imageItem.sprite = ownedItem;
             pricePanel.SetActive(false);
         }
-        else if (playerGetDamage.maxHealth == newMaxHealthBeforeUpgrade && score < price)
+        else if (playerGetDamage.maxHealth == newMaxHealthBeforeUpgrade && scoreText.score < price)
         {
             buttonItem.enabled = false;
             imageItem.sprite = avaiableItemNoMoney;
             pricePanel.SetActive(true);
         }
-        else if (playerGetDamage.maxHealth == newMaxHealthBeforeUpgrade && score >= price)
+        else if (playerGetDamage.maxHealth == newMaxHealthBeforeUpgrade && scoreText.score >= price)
         {
             buttonItem.enabled = true;
             imageItem.sprite = avaiableItemEnoughMoney;
@@ -36,5 +36,13 @@ public class ShopItemMaxHealth : ShopItem
             imageItem.sprite = unavaiableItem;
             pricePanel.SetActive(false);
         }
+    }
+
+    public void ButtonClickedMaxHealthUpgrade()
+    {
+        playerGetDamage.maxHealth = newMaxHealth;
+        scoreText.DecreaseScore(price);
+
+        SavePlayerAfterShopping();
     }
 }
