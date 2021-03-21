@@ -21,10 +21,10 @@ public class Spikes : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckProjectileHitbox();
+        CheckSpikeHitbox();
     }
 
-    public void CheckProjectileHitbox()
+    public void CheckSpikeHitbox()
     {
         Collider2D[] objects = Physics2D.OverlapBoxAll(hitBoxPoint.position, damageDistance, 0, whatIsPlayer);
 
