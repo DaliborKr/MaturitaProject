@@ -17,6 +17,8 @@ public class LevelManager : MonoBehaviour
 
     private SavePlayerManager savePlayerManager;
 
+    public string activatePortalKey = "";
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,11 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
         {
             //player.transform.position = nextLevelSpawn;
+            if (!activatePortalKey.Equals(""))
+            {
+                PlayerPrefs.SetInt(activatePortalKey, 1);
+            }
+
             savePlayerManager.SavePlayer();
             LoadScene();
         }
