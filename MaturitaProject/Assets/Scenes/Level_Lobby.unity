@@ -95990,7 +95990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268596266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -131.2338, y: -62.13787, z: 18.33494}
+  m_LocalPosition: {x: -152.74379, y: -67.15787, z: 18.33494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1719695060}
@@ -96329,7 +96329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 268596266}
+  cam: {fileID: 882368100}
   parallaxEffect: 1
 --- !u!212 &300179208
 SpriteRenderer:
@@ -96613,7 +96613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 268596266}
+  cam: {fileID: 882368100}
   parallaxEffect: 0.91
 --- !u!212 &406550435
 SpriteRenderer:
@@ -99662,7 +99662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882368100}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -131.2338, y: -62.13787, z: 18.33494}
+  m_LocalPosition: {x: -152.74379, y: -67.15787, z: 18.33494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1232304740}
@@ -99873,7 +99873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 268596266}
+  cam: {fileID: 882368100}
   parallaxEffect: 0.97
 --- !u!212 &914231672
 SpriteRenderer:
@@ -102101,7 +102101,7 @@ MonoBehaviour:
     m_Bits: 512
   sceneName: Level_1
   activatePortalKey: 
-  pc: {fileID: 0}
+  pc: {fileID: 2113522183}
   checkPointsInLevel: []
 --- !u!1 &1357792209
 GameObject:
@@ -102817,7 +102817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 268596266}
+  cam: {fileID: 882368100}
   parallaxEffect: 0.94
 --- !u!212 &1481478674
 SpriteRenderer:
@@ -105853,7 +105853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 268596266}
+  cam: {fileID: 882368100}
   parallaxEffect: 0.88
 --- !u!212 &2062903672
 SpriteRenderer:
@@ -106015,7 +106015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113522177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -118.3, y: -57.9, z: 0}
+  m_LocalPosition: {x: -139.81, y: -62.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1748827772}
@@ -106150,9 +106150,9 @@ MonoBehaviour:
   dashingTime: 0.2
   dashCooldown: 0.3
   jumpDelay: 0.1
-  dashAvaiable: 1
+  dashAvaiable: 0
   wallJumpAvaiable: 1
-  maxNumberOfJumps: 2
+  maxNumberOfJumps: 1
   wallHopDir: {x: 0.5, y: 1}
   wallJumpDir: {x: 1, y: 1.2}
   currentSpawnPos: {x: 0, y: 0, z: 0}

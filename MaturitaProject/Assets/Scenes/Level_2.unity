@@ -2519,7 +2519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1586858863}
+  cam: {fileID: 1274649254}
   parallaxEffect: 0.88
 --- !u!212 &245567774
 SpriteRenderer:
@@ -6621,7 +6621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1586858863}
+  cam: {fileID: 1274649254}
   parallaxEffect: 0.91
 --- !u!212 &691530435
 SpriteRenderer:
@@ -9851,7 +9851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1586858863}
+  cam: {fileID: 1274649254}
   parallaxEffect: 0.97
 --- !u!212 &970162193
 SpriteRenderer:
@@ -14933,7 +14933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1586858863}
+  cam: {fileID: 1274649254}
   parallaxEffect: 1
 --- !u!212 &1464278424
 SpriteRenderer:
@@ -17388,7 +17388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43520297a5b2e574f8babff16aa48fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1586858863}
+  cam: {fileID: 1274649254}
   parallaxEffect: 0.94
 --- !u!212 &1678613614
 SpriteRenderer:
