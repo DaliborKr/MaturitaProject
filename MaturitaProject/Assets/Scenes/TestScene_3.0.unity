@@ -1193,12 +1193,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 26, y: 18, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: TestScene_2.0
   activatePortalKey: TestPortal1
+  pc: {fileID: 1566306618}
+  checkPointsInLevel: []
 --- !u!1 &326819663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,7 +2390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558399929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.77, y: 14.87, z: -817.36255}
+  m_LocalPosition: {x: -28.25, y: 14.87, z: -817.36255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2624,7 +2627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593516429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.395383, y: 27.3, z: -348.7087}
+  m_LocalPosition: {x: -16.47, y: 19.57, z: -348.7087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 842645643}
@@ -10862,8 +10865,8 @@ LineRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Positions:
-  - {x: -3.74, y: -0.96, z: -1}
-  - {x: -3.75, y: -0.97, z: -1}
+  - {x: -30, y: 0, z: -1}
+  - {x: -30, y: 0, z: -1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -12065,6 +12068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0473cd030ff27d46a14bb8b73553291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevelName: 
   speedMovement: 10
   jumpForce: 13
   groundCheckRadius: 0.3

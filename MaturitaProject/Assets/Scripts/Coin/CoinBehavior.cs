@@ -37,8 +37,10 @@ public class CoinBehavior : MonoBehaviour
         if (isCollectedByPlayer)
         {
             scoreText.IncreaseScore(scoreValue);
+            CoinsCollectedNotSaved.colledButNotSavedCoins.Add(coinActiveManager);
+            gameObject.SetActive(false);
 
-            coinActiveManager.SetActiveC(false);
+            //coinActiveManager.SetActiveC(false);
 
             //Destroy(gameObject);
         }

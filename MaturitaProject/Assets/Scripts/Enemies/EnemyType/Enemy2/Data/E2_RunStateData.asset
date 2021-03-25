@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3e2c0a483c87148bf278eb73dcd875, type: 3}
   m_Name: E2_RunStateData
   m_EditorClassIdentifier: 
-  runSpeed: 10
+  runSpeed: 9

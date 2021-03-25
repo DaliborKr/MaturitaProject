@@ -95869,12 +95869,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 0, y: 0, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_8
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &268596266
 GameObject:
   m_ObjectHideFlags: 0
@@ -97134,12 +97137,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: -40, y: -71, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_4
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &450008785
 GameObject:
   m_ObjectHideFlags: 0
@@ -97231,12 +97237,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 56, y: -11, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_3
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &458724202
 GameObject:
   m_ObjectHideFlags: 0
@@ -97280,12 +97289,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: -87, y: -24, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_2
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &473717438
 GameObject:
   m_ObjectHideFlags: 0
@@ -97667,12 +97679,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 0, y: 0, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_7
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &531799084
 GameObject:
   m_ObjectHideFlags: 0
@@ -97794,12 +97809,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 0, y: 0, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_6
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &552779664
 GameObject:
   m_ObjectHideFlags: 0
@@ -100289,12 +100307,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 0, y: 0, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_10
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &1165133167
 GameObject:
   m_ObjectHideFlags: 0
@@ -101643,12 +101664,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 0, y: 0, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_5
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &1308365048
 GameObject:
   m_ObjectHideFlags: 0
@@ -102070,12 +102094,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: -81, y: -18, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_1
   activatePortalKey: 
+  pc: {fileID: 0}
+  checkPointsInLevel: []
 --- !u!1 &1357792209
 GameObject:
   m_ObjectHideFlags: 0
@@ -102119,12 +102146,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelSpawn: {x: 0, y: 0, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 512
   sceneName: Level_9
   activatePortalKey: 
+  pc: {fileID: 2113522183}
+  checkPointsInLevel: []
 --- !u!1 &1358426782
 GameObject:
   m_ObjectHideFlags: 0
@@ -106106,6 +106136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0473cd030ff27d46a14bb8b73553291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevelName: 
   speedMovement: 10
   jumpForce: 14
   groundCheckRadius: 0.42

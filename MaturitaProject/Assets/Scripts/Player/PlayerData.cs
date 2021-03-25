@@ -22,6 +22,8 @@ public class PlayerData
 
     public float[] position;
 
+    public string currentLevel;
+
     public PlayerData(PlayerController playerController, PlayerCombatController playerCombatController, PlayerGetDamage playerGetDamage, ScoreText scoreText)
     {
         this.score = scoreText.score;
@@ -42,6 +44,8 @@ public class PlayerData
         this.position[0] = playerController.currentSpawnPos.x;
         this.position[1] = playerController.currentSpawnPos.y;
         this.position[2] = playerController.currentSpawnPos.z;
+
+        this.currentLevel = playerController.currentLevelName;
     }
 
 

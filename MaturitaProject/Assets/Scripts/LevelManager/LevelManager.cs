@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    //public Vector3 nextLevelSpawn;
+    public Vector3 nextLevelSpawn;
 
     public Vector2 portalArea;
 
@@ -18,6 +18,10 @@ public class LevelManager : MonoBehaviour
     private SavePlayerManager savePlayerManager;
 
     public string activatePortalKey = "";
+
+    public PlayerController pc;
+
+    public CheckPointActiveManager[] checkPointsInLevel;
 
 
     // Start is called before the first frame update
@@ -46,14 +50,22 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
         {
-            //player.transform.position = nextLevelSpawn;
             if (!activatePortalKey.Equals(""))
             {
                 PlayerPrefs.SetInt(activatePortalKey, 1);
             }
-
+            if (checkPointsInLevel != null)
+            {
+                foreach (CheckPointActiveManager checkPoint in checkPointsInLevel)
+                {
+                    checkPoint.SetActiveCheckPoint(false);
+                }
+            }         
+            pc.currentSpawnPos = nextLevelSpawn;
+            pc.currentLevelName = sceneName;
             savePlayerManager.SavePlayer();
-            LoadScene();
+            savePlayerManager.LoadPlayerAndLevel();
+            //LoadScene();
         }
     }
 

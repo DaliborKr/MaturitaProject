@@ -33,15 +33,14 @@ public class SmashingStone : MonoBehaviour
     public void Update()
     {
         StartMove();
-        Move();
+        
     }
 
     void FixedUpdate()
     {
+        Move();
         CheckIsDetectingPlayer();
         CheckStoneHitbox();
-        Debug.Log("Down: " + isMovingDown);
-        Debug.Log("Up: " + isMovingUp);
     }
 
     public void StartMove()

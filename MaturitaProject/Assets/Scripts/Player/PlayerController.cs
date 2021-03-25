@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public string currentLevelName;
+
     private float movementInputValue;
     private float dashingTimeLeft;
     private float lastDashTime = -10000000;
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        currentLevelName = SceneManager.GetActiveScene().name;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentNumberOfJumps = maxNumberOfJumps;

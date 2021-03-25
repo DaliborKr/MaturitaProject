@@ -32,7 +32,7 @@ public class FireProjectileDragonsHead : MonoBehaviour
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, radiusFireProjectile, whatIsPlayer);
 
-        AttackDetails attackDetails = new AttackDetails(damageNumberFireProjectile1, pc.transform.position, pc.GetFacingDir());
+        AttackDetails attackDetails = new AttackDetails(damageNumberFireProjectile1, transform.position, 1);
 
         foreach (Collider2D collider in objects)
         {
