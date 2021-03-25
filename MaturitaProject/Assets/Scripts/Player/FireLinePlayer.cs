@@ -25,7 +25,7 @@ public class FireLinePlayer : MonoBehaviour
         firePointPlayer = GameObject.Find("firePointPlayer");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         SetFireLine();
     }
@@ -53,7 +53,7 @@ public class FireLinePlayer : MonoBehaviour
 
         fireDirection = ((mousePositionV2 - lineFirePointPlayerV2).normalized);
 
-        fireDirectionMultiplied = fireDirection * 4;
+        fireDirectionMultiplied = fireDirection * 1.3f;
 
         float angle = Vector3.Angle(transform.right, fireDirectionMultiplied);
 

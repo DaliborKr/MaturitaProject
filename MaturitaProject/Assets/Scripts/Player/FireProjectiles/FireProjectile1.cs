@@ -33,7 +33,7 @@ public class FireProjectile1 : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(fireDirection * projectileSpeed * Time.deltaTime);
         CheckProjectileHitbox();
@@ -53,7 +53,7 @@ public class FireProjectile1 : MonoBehaviour
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, radiusFireProjectile1, whatIsDamageable);
 
-        AttackDetails attackDetails = new AttackDetails(damageNumberFireProjectile1, pc.GetFacingDir());
+        AttackDetails attackDetails = new AttackDetails(damageNumberFireProjectile1, pc.transform.position, pc.GetFacingDir());
 
         foreach (Collider2D collider in objects)
         {

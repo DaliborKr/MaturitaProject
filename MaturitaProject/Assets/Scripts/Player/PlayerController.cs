@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public string currentLevelName;
+
     private float movementInputValue;
     private float dashingTimeLeft;
     private float lastDashTime = -10000000;
     private float jumpDelayLeft;
 
-    public int currentNumberOfJumps;
+    private int currentNumberOfJumps;
     private int facingDir;
     private int inputDir;
 
@@ -18,10 +21,10 @@ public class PlayerController : MonoBehaviour
 
     private bool isFacingRight = true;
     private bool canJump;
-    public bool isOnGround;
+    private bool isOnGround;
     private bool wasOnGround;
     private bool isTouchingWall;
-    public bool isWallsliding;
+    private bool isWallsliding;
     private bool flippedInAir;
     private bool iswallJumping;
     private bool isDashing;
@@ -45,10 +48,15 @@ public class PlayerController : MonoBehaviour
     public float dashCooldown;
     public float jumpDelay;
 
+    public bool dashAvaiable;
+    public bool wallJumpAvaiable;
+
     public int maxNumberOfJumps = 1;
 
     public Vector2 wallHopDir;
     public Vector2 wallJumpDir;
+
+    public Vector3 currentSpawnPos;
 
     public Transform groundCheck;
     public Transform wallCheck;
@@ -57,6 +65,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        currentLevelName = SceneManager.GetActiveScene().name;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentNumberOfJumps = maxNumberOfJumps;
@@ -180,7 +189,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
             currentNumberOfJumps--;
-            Debug.Log("normal Jump");
             isAttemptingToJump = false;
         }
         
@@ -192,18 +200,16 @@ public class PlayerController : MonoBehaviour
 
             isWallsliding = false;
             currentNumberOfJumps--;
-            Debug.Log("Wall hop");
             isAttemptingToJump = false;
         }
-        else if (canJump && isWallsliding  && movementInputValue != 0)
+        else if (canJump && isWallsliding  && movementInputValue != 0 && wallJumpAvaiable)
         {
             
             if (facingDir == inputDir)
             {
                 rb.velocity = new Vector2(rb.velocity.x, wallJumpForceStraight);
-                Vector2 newWallJumpForce = new Vector2(180 * -facingDir, 0);
+                Vector2 newWallJumpForce = new Vector2(50 * -facingDir, 0);
                 rb.AddForce(newWallJumpForce, ForceMode2D.Impulse);
-                Debug.Log("Wall jump straight");
                 isAttemptingToJump = false;
             }
             else
@@ -212,7 +218,6 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(wallJumpForce * -facingDir, wallJumpForceStraight);
                 FlipWallJumpingCharacter();
                 iswallJumping = true;
-                Debug.Log("Wall jump side");
                 isAttemptingToJump = false;
             }
 
@@ -224,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (isFirstDashInAir)
+        if (isFirstDashInAir && dashAvaiable)
         {
             isDashing = true;
             dashingTimeLeft = dashingTime;
@@ -411,7 +416,23 @@ public class PlayerController : MonoBehaviour
         isFacingRight = !isFacingRight;
     }
 
-        private void OnDrawGizmos()
+    public void AddForceWhenHitted(bool toRight, Vector2 hitForce)
+    {
+        isOnGround = false;
+        currentNumberOfJumps = maxNumberOfJumps;
+        currentNumberOfJumps--;
+
+        if (toRight)
+        {
+            rb.velocity = new Vector2(hitForce.x * 1, hitForce.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(hitForce.x * -1, hitForce.y);
+        }
+    }
+
+    private void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);

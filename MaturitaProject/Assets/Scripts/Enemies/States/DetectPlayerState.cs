@@ -8,18 +8,29 @@ public class DetectPlayerState : State
 
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
+    protected bool isInMeleeAttackRange;
+    protected bool isDetectingWall;
+    protected bool isDetectingLedge;
 
     public DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
     }
 
-    public override void Enter()
+    public override void DoChecks()
     {
-        base.Enter();
+        base.DoChecks();
 
         isInMinAgroRange = enemy.CheckMinAgroRange();
         isInMaxAgroRange = enemy.CheckMaxAgroRange();
+        isInMeleeAttackRange = enemy.CheckPlayerInMeleeAttackRange();
+        isDetectingLedge = enemy.CheckLedge();
+        isDetectingWall = enemy.CheckWall();
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
     }
 
     public override void Exit()
@@ -35,8 +46,5 @@ public class DetectPlayerState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
-        isInMinAgroRange = enemy.CheckMinAgroRange();
-        isInMaxAgroRange = enemy.CheckMaxAgroRange();
     }
 }

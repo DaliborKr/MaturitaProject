@@ -7,12 +7,23 @@ public class MoveState : State
     protected D_MoveState stateData;
 
     protected bool isDetectingWall;
-    protected bool isDecetingLedge;
+    protected bool isDetectingLedge;
     protected bool isInMinAgroRange;
+    protected bool isInMaxAgroRange;
 
     public MoveState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_MoveState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
+    }
+
+    public override void DoChecks()
+    {
+        base.DoChecks();
+
+        isDetectingLedge = enemy.CheckLedge();
+        isDetectingWall = enemy.CheckWall();
+        isInMinAgroRange = enemy.CheckMinAgroRange();
+        isInMaxAgroRange = enemy.CheckMaxAgroRange();
     }
 
     public override void Enter()
@@ -20,11 +31,6 @@ public class MoveState : State
         base.Enter();
 
         enemy.SetVelocity(stateData.movementSpeed);
-
-        isDecetingLedge = enemy.CheckLedge();
-        isDetectingWall = enemy.CheckWall();
-        isInMinAgroRange = enemy.CheckMinAgroRange();
-
     }
 
     public override void Exit()
@@ -40,9 +46,5 @@ public class MoveState : State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-
-        isDecetingLedge = enemy.CheckLedge();
-        isDetectingWall = enemy.CheckWall();
-        isInMinAgroRange = enemy.CheckMinAgroRange();
     }
 }

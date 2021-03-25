@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PlayerCombatController : MonoBehaviour
 {
+    public bool fireAvaiable;
+    public int projectileType;
+
     [SerializeField]
-    private GameObject projectile1Prefab;
+    private GameObject[] projectilePrefabs;
 
     private LineRenderer fireLinePlayer;
 
@@ -18,8 +21,7 @@ public class PlayerCombatController : MonoBehaviour
     private bool isMelee;
     private bool isTryingToFire;
 
-    [SerializeField]
-    private int damageNumberAttack1;
+    public int damageNumberAttack1;
 
     [SerializeField]
     private float fireDelay;
@@ -29,6 +31,8 @@ public class PlayerCombatController : MonoBehaviour
     private float radiusAttack1;
     private float lastInputTime = Mathf.NegativeInfinity;
     private float lastFireTime = Mathf.NegativeInfinity;
+    private float switchTime = 0.2f;
+    private float lastTimeSwitched = Mathf.NegativeInfinity;
 
     [SerializeField]
     private Transform rangeCheckAttack1;
@@ -60,8 +64,9 @@ public class PlayerCombatController : MonoBehaviour
 
     private void CheckCombatInput()
     {
-        if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0))
+        if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0) && Time.time >= lastTimeSwitched + switchTime && fireAvaiable)
         {
+            lastTimeSwitched = Time.time;
             isMelee = !isMelee;
         }
         if (Input.GetMouseButtonDown(0))
@@ -88,7 +93,7 @@ public class PlayerCombatController : MonoBehaviour
             fireLinePlayer.enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isTryingToFire)
+        if (Input.GetKeyDown(KeyCode.Q) && isTryingToFire)
         {
             CancelTryToFire();
         }
@@ -137,7 +142,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         lastFireTime = Time.time;
         animator.SetBool("isFiring", false);
-        Instantiate(projectile1Prefab, firePointPlayer.position, firePointPlayer.rotation);
+        Instantiate(projectilePrefabs[projectileType], firePointPlayer.position, firePointPlayer.rotation);
         pc.EnableFlip();
 
     }
@@ -165,7 +170,7 @@ public class PlayerCombatController : MonoBehaviour
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(rangeCheckAttack1.position, radiusAttack1, whatIsDamageable);
 
-        AttackDetails attackDetails = new AttackDetails(damageNumberAttack1, pc.GetFacingDir());
+        AttackDetails attackDetails = new AttackDetails(damageNumberAttack1, pc.transform.position, pc.GetFacingDir());
 
         foreach (Collider2D collider in objects)
         {

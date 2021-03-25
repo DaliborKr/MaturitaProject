@@ -27,7 +27,29 @@ public class E1_DetectPlayerState : DetectPlayerState
     {
         base.LogicUpdate();
 
-        if (!isInMaxAgroRange)
+        if (isDead)
+        {
+            stateMachine.ChangeState(enemyType.deadState);
+        }
+        if (isInMeleeAttackRange)
+        {
+            stateMachine.ChangeState(enemyType.meleeAttackState);
+        }
+
+        if (isInMinAgroRange)
+        {
+            if ((enemy.player.transform.position.x < enemy.aliveGameObject.transform.position.x && enemy.facingDir == 1) || (enemy.player.transform.position.x > enemy.aliveGameObject.transform.position.x && enemy.facingDir == -1))
+            {
+                enemy.Flip();
+            }
+        }
+
+        if (isInMinAgroRange && Time.time > startTime + stateData.timeToTrigger)
+        {           
+            stateMachine.ChangeState(enemyType.runState);
+        }
+
+        if (!isInMinAgroRange)
         {
             enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
