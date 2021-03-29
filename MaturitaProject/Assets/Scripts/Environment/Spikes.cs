@@ -32,7 +32,6 @@ public class Spikes : MonoBehaviour
 
         foreach (Collider2D collider in objects)
         {
-            Debug.Log("melo by byt au");
             collider.transform.SendMessage("GetDamageSpikes", attackDetails);
         }
     }

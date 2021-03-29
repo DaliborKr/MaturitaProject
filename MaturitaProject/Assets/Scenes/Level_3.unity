@@ -353,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 26953110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.1, y: 62.4, z: -348.7087}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_Children:
   - {fileID: 2136629832}
   - {fileID: 974836135}
@@ -3433,7 +3433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405593387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.3, y: -134.9, z: 0}
+  m_LocalPosition: {x: 51, y: -8.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1225485556}
@@ -3493,7 +3493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 10
-  hitForce: {x: 20, y: 10}
+  hitForce: {x: 0, y: 5}
   maxHealth: 10
   coin: {fileID: 3208257660614222274, guid: 380fdc2fbffbb2b439e069ae0e04b0c7, type: 3}
   lives:
@@ -3579,6 +3579,7 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 49408
+  cameraShake: {fileID: 0}
 --- !u!50 &405593394
 Rigidbody2D:
   serializedVersion: 4
@@ -86284,7 +86285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 1.75, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -89632,6 +89633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977591449}
   - component: {fileID: 977591450}
+  - component: {fileID: 977591451}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -89647,7 +89649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977591448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.23379, y: -139.13786, z: 18.33494}
+  m_LocalPosition: {x: 38.06621, y: -11.287869, z: 18.33494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 672378657}
@@ -89670,7 +89672,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 13
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 405593388}
@@ -89689,6 +89691,20 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 672378657}
+--- !u!114 &977591451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977591448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c35ba1647076874691250a48ace30a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.1
+  cameraShaking: 0
 --- !u!1 &980227207
 GameObject:
   m_ObjectHideFlags: 0
@@ -92439,6 +92455,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   pc: {fileID: 405593393}
+  playerGetDamage: {fileID: 0}
   checkPointActiveManager: {fileID: 1373655726}
 --- !u!212 &1222417725
 SpriteRenderer:
@@ -93942,6 +93959,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   pc: {fileID: 405593393}
+  playerGetDamage: {fileID: 0}
   checkPointActiveManager: {fileID: 1212846965}
 --- !u!212 &1351153501
 SpriteRenderer:
@@ -99213,7 +99231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884968785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.23379, y: -139.13786, z: 18.33494}
+  m_LocalPosition: {x: 38.06621, y: -11.287869, z: 18.33494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1010806032}

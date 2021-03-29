@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private bool isFirstDashInAir;
     private bool isAttemptingToJump;
     private bool isWalking;
+    private bool cameraShakeDone;
 
     public float speedMovement = 10.0f;
     public float jumpForce = 16.0f;
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
     public Transform wallCheck;
 
     public LayerMask isGround;
+
+    public CameraShake cameraShake;
     
     void Start()
     {
@@ -312,18 +315,26 @@ public class PlayerController : MonoBehaviour
     {
         if ((isOnGround && rb.velocity.y <= 0) || isWallsliding)
         {
+            if (!cameraShakeDone)
+            {
+                //cameraShake.cameraShaking = true;
+                cameraShakeDone = true;
+            }
             currentNumberOfJumps = maxNumberOfJumps;
             isFirstDashInAir = true;
-            wasOnGround = true;           
+            wasOnGround = true;
+            
         }
         else if(wasOnGround && rb.velocity.y <= 0)
         {                       
             currentNumberOfJumps--;
             wasOnGround = false;
+            cameraShakeDone = false;
         }
         else 
         { 
-            wasOnGround = false; 
+            wasOnGround = false;
+            cameraShakeDone = false;
         }
         
         if (currentNumberOfJumps <= 0)

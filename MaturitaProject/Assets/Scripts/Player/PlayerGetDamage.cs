@@ -24,6 +24,8 @@ public class PlayerGetDamage : MonoBehaviour
     public Sprite emptyHealthSprite;
     public Sprite halfFullHealthSprite;
 
+    private CameraShake cameraShake;
+
     public float delaySpikesDamage;
     private float lastTimeSpikesDamage = Mathf.NegativeInfinity;
 
@@ -31,6 +33,7 @@ public class PlayerGetDamage : MonoBehaviour
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         deadFade = GameObject.Find("DeadFade");
+        cameraShake = GameObject.Find("PlayerCamera").GetComponent<CameraShake>();
         deadTrasition = deadFade.GetComponent<Animator>();
         currentHealth = maxHealth;
     }
@@ -42,17 +45,19 @@ public class PlayerGetDamage : MonoBehaviour
 
     public void GetDamage(AttackDetails attackDetails)
     { 
-        currentHealth -= attackDetails.damageNumber;
-
+        currentHealth -= attackDetails.damageNumber;   
         if (attackDetails.facingDir == 1)
         {
             pc.AddForceWhenHitted(true, hitForce);
-            Debug.Log("hop pravo");
         }
         else if(attackDetails.facingDir == -1)
         {
             pc.AddForceWhenHitted(false, hitForce);
-            Debug.Log("hop levo");
+        }
+
+        if (currentHealth >= 0)
+        {
+            cameraShake.cameraShaking = true;
         }
 
         if (currentHealth <= 0)
@@ -66,8 +71,14 @@ public class PlayerGetDamage : MonoBehaviour
     {
         if (Time.time >= lastTimeSpikesDamage + delaySpikesDamage)
         {
+            pc.AddForceWhenHitted(true, hitForce);
+
             lastTimeSpikesDamage = Time.time;
             currentHealth -= attackDetails.damageNumber;
+            if (currentHealth >= 0)
+            {
+                cameraShake.cameraShaking = true;
+            }
 
             if (currentHealth <= 0)
             {

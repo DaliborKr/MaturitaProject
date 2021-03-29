@@ -14,6 +14,8 @@ public class CheckPointDeactivated : MonoBehaviour
 
     public PlayerController pc;
 
+    public PlayerGetDamage playerGetDamage;
+
     public CheckPointActiveManager checkPointActiveManager;
 
 
@@ -21,6 +23,7 @@ public class CheckPointDeactivated : MonoBehaviour
     void Start()
     {
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
+        playerGetDamage = GameObject.Find("Player").GetComponent<PlayerGetDamage>();
     }
 
     private void Update()
@@ -45,6 +48,7 @@ public class CheckPointDeactivated : MonoBehaviour
         {
             pc.currentSpawnPos = transform.position;
             savePlayerManager.SavePlayer();
+            playerGetDamage.currentHealth = playerGetDamage.maxHealth;
             checkPointActiveManager.SetActiveCheckPoint(true);
         }
     }

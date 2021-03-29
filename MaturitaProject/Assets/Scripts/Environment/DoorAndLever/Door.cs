@@ -17,12 +17,22 @@ public class Door : MonoBehaviour
     public Sprite leverIsActivated;
     public Sprite leverIsNotActivated;
 
+    public bool isHorizontal;
+
     void Start()
     {
         isDoorOpen = false;
 
         closePos = transform.position;
-        openPos = new Vector3 (closePos.x, closePos.y + 2.5f, closePos.z);
+        if (isHorizontal)
+        {
+            openPos = new Vector3(closePos.x - 2.5f, closePos.y, closePos.z);
+        }
+        else
+        {
+            openPos = new Vector3(closePos.x, closePos.y + 2.5f, closePos.z);
+        }
+        
     }
 
     void Update()
@@ -57,21 +67,43 @@ public class Door : MonoBehaviour
 
     public void DoorMove()
     {
-        if (isDoorOpen && transform.position.y < openPos.y)
+        if (!isHorizontal)
         {
-            transform.Translate(Vector2.up * speed * Time.deltaTime);
+            if (isDoorOpen && transform.position.y < openPos.y)
+            {
+                transform.Translate(Vector2.up * speed * Time.deltaTime);
+            }
+            else if (isDoorOpen && transform.position.y >= openPos.y)
+            {
+                transform.position = openPos;
+            }
+            else if (!isDoorOpen && transform.position.y > closePos.y)
+            {
+                transform.Translate(Vector2.down * speed * Time.deltaTime);
+            }
+            else if (!isDoorOpen && transform.position.y <= closePos.y)
+            {
+                transform.position = closePos;
+            }
         }
-        else if (isDoorOpen && transform.position.y >= openPos.y)
+        else
         {
-            transform.position = openPos;
-        }
-        else if (!isDoorOpen && transform.position.y > closePos.y)
-        {
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
-        }
-        else if (!isDoorOpen && transform.position.y <= closePos.y)
-        {
-            transform.position = closePos;
+            if (isDoorOpen && transform.position.x > openPos.x)
+            {
+                transform.Translate(Vector2.up * speed * Time.deltaTime);
+            }
+            else if (isDoorOpen && transform.position.x <= openPos.x)
+            {
+                transform.position = openPos;
+            }
+            else if (!isDoorOpen && transform.position.x < closePos.x)
+            {
+                transform.Translate(Vector2.down * speed * Time.deltaTime);
+            }
+            else if (!isDoorOpen && transform.position.x >= closePos.x)
+            {
+                transform.position = closePos;
+            }
         }
     }
 

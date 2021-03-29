@@ -41,6 +41,7 @@ public class ShopItemMaxHealth : ShopItem
     public void ButtonClickedMaxHealthUpgrade()
     {
         playerGetDamage.maxHealth = newMaxHealth;
+        playerGetDamage.currentHealth = playerGetDamage.maxHealth;
         scoreText.DecreaseScore(price);
 
         SavePlayerAfterShopping();
