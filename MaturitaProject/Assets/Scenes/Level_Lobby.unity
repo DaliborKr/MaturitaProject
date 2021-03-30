@@ -97809,7 +97809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelSpawn: {x: 0, y: 0, z: 0}
+  nextLevelSpawn: {x: 18, y: -58, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2
@@ -101679,7 +101679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d913956baa9bd4da6c56a84bb0e229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelSpawn: {x: 0, y: 0, z: 0}
+  nextLevelSpawn: {x: 139, y: -68, z: 0}
   portalArea: {x: 2.9, y: 2.5}
   whatIsPlayer:
     serializedVersion: 2

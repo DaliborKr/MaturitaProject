@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 94614720}
   - component: {fileID: 94614719}
   m_Layer: 0
-  m_Name: Lever
+  m_Name: Lever2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4123,7 +4123,7 @@ GameObject:
   - component: {fileID: 273232833}
   - component: {fileID: 273232832}
   m_Layer: 0
-  m_Name: Lever
+  m_Name: Lever3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4445,6 +4445,7 @@ MonoBehaviour:
     type: 3}
   leverIsNotActivated: {fileID: 8272663500397908942, guid: e0288b41c0a107b4e9caefd3a29416cf,
     type: 3}
+  isHorizontal: 0
 --- !u!212 &285862475
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114026,6 +114027,7 @@ MonoBehaviour:
     type: 3}
   leverIsNotActivated: {fileID: 8272663500397908942, guid: e0288b41c0a107b4e9caefd3a29416cf,
     type: 3}
+  isHorizontal: 0
 --- !u!212 &762825599
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114215,7 +114217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773554230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -65.33379, y: -73.68787, z: 18.33494}
+  m_LocalPosition: {x: -48.83379, y: -84.48787, z: 18.33494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 789811262}
@@ -119230,7 +119232,7 @@ GameObject:
   - component: {fileID: 1151485368}
   - component: {fileID: 1151485367}
   m_Layer: 0
-  m_Name: Lever
+  m_Name: Lever4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120310,6 +120312,7 @@ MonoBehaviour:
     type: 3}
   leverIsNotActivated: {fileID: 8272663500397908942, guid: e0288b41c0a107b4e9caefd3a29416cf,
     type: 3}
+  isHorizontal: 0
 --- !u!212 &1227518745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124002,6 +124005,7 @@ MonoBehaviour:
     type: 3}
   leverIsNotActivated: {fileID: 8272663500397908942, guid: e0288b41c0a107b4e9caefd3a29416cf,
     type: 3}
+  isHorizontal: 0
 --- !u!212 &1506825764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124969,6 +124973,7 @@ MonoBehaviour:
     type: 3}
   leverIsNotActivated: {fileID: 8272663500397908942, guid: e0288b41c0a107b4e9caefd3a29416cf,
     type: 3}
+  isHorizontal: 0
 --- !u!212 &1574351909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127490,7 +127495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735818859}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -65.33379, y: -73.68787, z: 18.33494}
+  m_LocalPosition: {x: -48.83379, y: -84.48787, z: 18.33494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1509961749}
@@ -131829,7 +131834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986077534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.4, y: -71.2, z: 0}
+  m_LocalPosition: {x: -35.9, y: -82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1896426607}
@@ -134161,7 +134166,7 @@ GameObject:
   - component: {fileID: 2085373643}
   - component: {fileID: 2085373642}
   m_Layer: 0
-  m_Name: Lever
+  m_Name: Lever1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

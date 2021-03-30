@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CheckPointDeactivated : MonoBehaviour
 {
+    public delegate void CheckPointAction();
+    public static event CheckPointAction OnCheckPointed;
+
     public Vector2 checkPointArea;
 
     private bool isPlayerInArea;
@@ -46,6 +49,7 @@ public class CheckPointDeactivated : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
         {
+            OnCheckPointed?.Invoke();
             pc.currentSpawnPos = transform.position;
             savePlayerManager.SavePlayer();
             playerGetDamage.currentHealth = playerGetDamage.maxHealth;

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public delegate void TeleportAction();
+    public static event TeleportAction OnTeleported;
+
     public Vector3 nextLevelSpawn;
 
     public Vector2 portalArea;
@@ -50,6 +53,8 @@ public class LevelManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
         {
+            OnTeleported?.Invoke();
+
             if (!activatePortalKey.Equals(""))
             {
                 PlayerPrefs.SetInt(activatePortalKey, 1);
