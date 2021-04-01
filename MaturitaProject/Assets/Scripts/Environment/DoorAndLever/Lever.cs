@@ -16,6 +16,8 @@ public class Lever : MonoBehaviour
 
     public LayerMask whatIsPlayer;
 
+    private PauseMenu pauseMenu;
+
     private string key;
 
     private void Awake()
@@ -40,6 +42,7 @@ public class Lever : MonoBehaviour
 
     void Start()
     {
+        pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
         canBeSaved = false;
     }
     
@@ -60,18 +63,21 @@ public class Lever : MonoBehaviour
 
     public void ActivateLever()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea && !isActivated)
+        if (!pauseMenu.isActivated)
         {
-            isActivated = true;
-            canBeSaved = true;           
-            animator.SetBool("isActivated", isActivated);
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea && isActivated)
-        {
-            isActivated = false;
-            canBeSaved = false;
-            PlayerPrefs.SetInt(key, 0);
-            animator.SetBool("isActivated", isActivated);
+            if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea && !isActivated)
+            {
+                isActivated = true;
+                canBeSaved = true;
+                animator.SetBool("isActivated", isActivated);
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea && isActivated)
+            {
+                isActivated = false;
+                canBeSaved = false;
+                PlayerPrefs.SetInt(key, 0);
+                animator.SetBool("isActivated", isActivated);
+            }
         }
     }
 

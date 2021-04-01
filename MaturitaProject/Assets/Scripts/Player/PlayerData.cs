@@ -48,5 +48,30 @@ public class PlayerData
         this.currentLevel = playerController.currentLevelName;
     }
 
+    public PlayerData(int score, int maxNumberOfJumps, int maxHealth, int currentHealth, bool fireAvaiable, int projectileType, 
+        int damgeMeleeAttack, bool canDash, bool canWallJump, float[] positionNew, string currentLevel)
+    {
+        this.score = score;
+
+        this.maxNumberOfJumps = maxNumberOfJumps;
+
+        this.maxHealth = maxHealth;
+        this.currentHealth = currentHealth;
+
+        this.fireAvaiableD = fireAvaiable;
+        this.projectileTypeD = projectileType;
+        this.damgeMeleeAttack = damgeMeleeAttack;
+
+        this.canDash = canDash;
+        this.canWallJump = canWallJump;
+
+        this.position = new float[3];
+        this.position[0] = positionNew[0];
+        this.position[1] = positionNew[1];
+        this.position[2] = positionNew[2];
+
+        this.currentLevel = currentLevel;
+    }
+
 
 }

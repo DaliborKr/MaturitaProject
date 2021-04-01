@@ -53,10 +53,8 @@ public class SavePlayerManager : MonoBehaviour
 
     public void LoadPlayerAndLevel()
     {
-        LoadPlayer();
-
         PlayerData playerData = SaveManager.LoadPlayerData();
-        SceneManager.LoadScene(playerData.currentLevel);
+        SceneManager.LoadScene(playerData.currentLevel);  
     }
 
 }

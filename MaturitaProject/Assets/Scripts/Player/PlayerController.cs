@@ -65,12 +65,15 @@ public class PlayerController : MonoBehaviour
     public LayerMask isGround;
 
     public CameraShake cameraShake;
-    
+
+    private PauseMenu pauseMenu;
+
     void Start()
     {
         currentLevelName = SceneManager.GetActiveScene().name;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
         currentNumberOfJumps = maxNumberOfJumps;
         dashingTimeLeft = dashingTime;
         canFlip = true;
@@ -97,17 +100,20 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInput()
     {
-        movementInputValue = Input.GetAxisRaw("Horizontal");
+        if (!pauseMenu.isActivated)
+        {
+            movementInputValue = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            AttemptToJump();
-        }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (Time.time > (lastDashTime + dashCooldown))
+            if (Input.GetButtonDown("Jump"))
             {
-                Dash();
+                AttemptToJump();
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                if (Time.time > (lastDashTime + dashCooldown))
+                {
+                    Dash();
+                }
             }
         }
     }

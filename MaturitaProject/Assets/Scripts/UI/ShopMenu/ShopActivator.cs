@@ -15,10 +15,12 @@ public class ShopActivator : MonoBehaviour
 
     private SavePlayerManager savePlayerManager;
 
+    private PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
+        pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
         wasPlayerInArea = false;
     }
@@ -40,20 +42,32 @@ public class ShopActivator : MonoBehaviour
 
     public void ActivateShop()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea && !wasPlayerInArea)
+        if (!pauseMenu.isActivated)
         {
-            shopMenu.SetActive(true);
-            wasPlayerInArea = true;
-        }
-        else if (wasPlayerInArea && Input.GetKeyDown(KeyCode.E))
-        {
-            shopMenu.SetActive(false);
-            wasPlayerInArea = false;
-        }
-        else if ((!isPlayerInArea && wasPlayerInArea))
-        {
-            shopMenu.SetActive(false);
-            wasPlayerInArea = false;
+            if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea && !wasPlayerInArea)
+            {
+                pauseMenu.canBeActivated = false;
+                shopMenu.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                wasPlayerInArea = true;
+            }
+            else if (wasPlayerInArea && Input.GetKeyDown(KeyCode.E))
+            {
+                pauseMenu.canBeActivated = true;
+                shopMenu.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                wasPlayerInArea = false;
+            }
+            else if ((!isPlayerInArea && wasPlayerInArea))
+            {
+                pauseMenu.canBeActivated = true;
+                shopMenu.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                wasPlayerInArea = false;
+            }
         }
     }
 

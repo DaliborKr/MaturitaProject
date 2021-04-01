@@ -46,12 +46,15 @@ public class PlayerCombatController : MonoBehaviour
 
     private PlayerController pc;
 
+    private PauseMenu pauseMenu;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         animator.SetBool("canAttack", combatEnabled);
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         fireLinePlayer = GameObject.Find("fireLinePlayer").GetComponent<LineRenderer>();
+        pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
         isMelee = true;
     }
 
@@ -64,47 +67,51 @@ public class PlayerCombatController : MonoBehaviour
 
     private void CheckCombatInput()
     {
-        if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0) && Time.time >= lastTimeSwitched + switchTime && fireAvaiable)
+        if (!pauseMenu.isActivated)
         {
-            lastTimeSwitched = Time.time;
-            isMelee = !isMelee;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (isMelee)
+            if ((Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetAxis("Mouse ScrollWheel") < 0) && !Input.GetMouseButtonDown(0) && Time.time >= lastTimeSwitched + switchTime && fireAvaiable)
             {
-                if (combatEnabled)
+                lastTimeSwitched = Time.time;
+                isMelee = !isMelee;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (isMelee)
                 {
-                    gotInput = true;
-                    lastInputTime = Time.time;
+                    if (combatEnabled)
+                    {
+                        gotInput = true;
+                        lastInputTime = Time.time;
+                    }
+                }
+                if (!isMelee && !pc.GetIsWallsliding())
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = false;
+                    TryToFire();
                 }
             }
-            if (!isMelee && !pc.GetIsWallsliding())
+
+            if (Input.GetMouseButtonUp(0) && !isMelee && isTryingToFire)
             {
-                TryToFire();
+                isTryingToFire = false;
+                animator.SetBool("isTryingToFire", isTryingToFire);
+                animator.SetBool("isFiring", true);
+                fireLinePlayer.enabled = false;
             }
-        }
-        
-        if (Input.GetMouseButtonUp(0) && !isMelee && isTryingToFire )
-        {
-            isTryingToFire = false;
-            animator.SetBool("isTryingToFire", isTryingToFire);
-            animator.SetBool("isFiring", true);
-            fireLinePlayer.enabled = false;
-        }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isTryingToFire)
-        {
-            CancelTryToFire();
-        }
+            if (Input.GetKeyDown(KeyCode.Q) && isTryingToFire)
+            {
+                CancelTryToFire();
+            }
 
-        if (Input.GetMouseButtonUp(1) && isTryingToFire)
-        {
-            pc.EnableFlip();
-            pc.FlipCharacter();
-            pc.DisableFlip();
-        }
-        
+            if (Input.GetMouseButtonUp(1) && isTryingToFire)
+            {
+                pc.EnableFlip();
+                pc.FlipCharacter();
+                pc.DisableFlip();
+            }
+        }       
     }
 
     private void CheckNotDashingOrWallslidngWhileTryToFire()
@@ -143,7 +150,8 @@ public class PlayerCombatController : MonoBehaviour
         lastFireTime = Time.time;
         animator.SetBool("isFiring", false);
         Instantiate(projectilePrefabs[projectileType], firePointPlayer.position, firePointPlayer.rotation);
-        pc.EnableFlip();
+        pc.EnableFlip();       
+        Cursor.lockState = CursorLockMode.Locked;
 
     }
 

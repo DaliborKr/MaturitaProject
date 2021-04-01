@@ -21,12 +21,15 @@ public class CheckPointDeactivated : MonoBehaviour
 
     public CheckPointActiveManager checkPointActiveManager;
 
+    private PauseMenu pauseMenu;
+
 
     // Start is called before the first frame update
     void Start()
     {
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
         playerGetDamage = GameObject.Find("Player").GetComponent<PlayerGetDamage>();
+        pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
     }
 
     private void Update()
@@ -47,13 +50,16 @@ public class CheckPointDeactivated : MonoBehaviour
 
     public void SaveLevel()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
+        if (!pauseMenu.isActivated)
         {
-            OnCheckPointed?.Invoke();
-            pc.currentSpawnPos = transform.position;
-            savePlayerManager.SavePlayer();
-            playerGetDamage.currentHealth = playerGetDamage.maxHealth;
-            checkPointActiveManager.SetActiveCheckPoint(true);
+            if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
+            {
+                OnCheckPointed?.Invoke();
+                pc.currentSpawnPos = transform.position;
+                savePlayerManager.SavePlayer();
+                playerGetDamage.currentHealth = playerGetDamage.maxHealth;
+                checkPointActiveManager.SetActiveCheckPoint(true);
+            }
         }
     }
 

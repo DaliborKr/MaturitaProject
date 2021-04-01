@@ -8,7 +8,7 @@ public class CoinActiveManager : MonoBehaviour
     private void Awake()
     {
         string key = SceneManager.GetActiveScene().name + gameObject.name;
-        if (PlayerPrefs.GetInt(key) == 0)
+        if (PlayerPrefs.GetInt(key) == 1)
         {
             gameObject.SetActive(false);
         }
@@ -21,7 +21,7 @@ public class CoinActiveManager : MonoBehaviour
     public void SetActiveC(bool isActive)
     {
         string key = SceneManager.GetActiveScene().name + gameObject.name;
-        PlayerPrefs.SetInt(key, isActive ? 1 : 0);
+        PlayerPrefs.SetInt(key, isActive ? 0 : 1);
         gameObject.SetActive(isActive);
     }
 }

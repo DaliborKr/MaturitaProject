@@ -150,7 +150,7 @@ public class Enemy : MonoBehaviour
 
     public void InstantiateCoins()
     {
-        int numberOfCoins = Random.Range(3, 5);
+        int numberOfCoins = Random.Range(3, 4);
 
         for (int i = 0; i < numberOfCoins; i++)
         {

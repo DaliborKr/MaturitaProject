@@ -26,11 +26,13 @@ public class LevelManager : MonoBehaviour
 
     public CheckPointActiveManager[] checkPointsInLevel;
 
+    private PauseMenu pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
+        pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
     }
 
     private void Update()
@@ -51,26 +53,28 @@ public class LevelManager : MonoBehaviour
 
     public void ChangeLevel()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
+        if (!pauseMenu.isActivated)
         {
-            OnTeleported?.Invoke();
+            if (Input.GetKeyDown(KeyCode.E) && isPlayerInArea)
+            {
+                OnTeleported?.Invoke();
 
-            if (!activatePortalKey.Equals(""))
-            {
-                PlayerPrefs.SetInt(activatePortalKey, 1);
-            }
-            if (checkPointsInLevel != null)
-            {
-                foreach (CheckPointActiveManager checkPoint in checkPointsInLevel)
+                if (!activatePortalKey.Equals(""))
                 {
-                    checkPoint.SetActiveCheckPoint(false);
+                    PlayerPrefs.SetInt(activatePortalKey, 1);
                 }
-            }         
-            pc.currentSpawnPos = nextLevelSpawn;
-            pc.currentLevelName = sceneName;
-            savePlayerManager.SavePlayer();
-            savePlayerManager.LoadPlayerAndLevel();
-            //LoadScene();
+                if (checkPointsInLevel != null)
+                {
+                    foreach (CheckPointActiveManager checkPoint in checkPointsInLevel)
+                    {
+                        checkPoint.SetActiveCheckPoint(false);
+                    }
+                }
+                pc.currentSpawnPos = nextLevelSpawn;
+                pc.currentLevelName = sceneName;
+                savePlayerManager.SavePlayer();
+                savePlayerManager.LoadPlayerAndLevel();
+            }
         }
     }
 

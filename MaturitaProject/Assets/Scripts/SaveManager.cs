@@ -35,6 +35,26 @@ public static class SaveManager
 
             return playerData;
         }
+        else
+        {
+            float[] defPosition = new float[3];
+            defPosition[0] = -140;
+            defPosition[1] = -63;
+            defPosition[2] = 0;
+
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            path = Application.persistentDataPath + "/playerData.dal";
+            Debug.Log(path);
+            FileStream stream = new FileStream(path, FileMode.Create);
+            PlayerData playerData = new PlayerData(0, 1, 10, 10, false, 0, 3, false, false, defPosition, "Level_Lobby");
+
+            formatter.Serialize(stream, playerData);
+
+            stream.Close();
+
+            return playerData;
+        }
 
         Debug.LogError($"File not found! (Path: {path})");
         return null;

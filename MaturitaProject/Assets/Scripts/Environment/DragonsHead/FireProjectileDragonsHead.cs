@@ -6,8 +6,6 @@ public class FireProjectileDragonsHead : MonoBehaviour
 {
     public LayerMask whatIsPlayer;
 
-    protected PlayerController pc;
-
     [SerializeField]
     protected int damageNumberFireProjectile1;
 
@@ -18,7 +16,6 @@ public class FireProjectileDragonsHead : MonoBehaviour
 
     public void Start()
     {
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     public void FixedUpdate()

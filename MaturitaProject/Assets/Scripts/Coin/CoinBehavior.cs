@@ -18,7 +18,7 @@ public class CoinBehavior : MonoBehaviour
     
     private void Awake()
     {
-        coinActiveManager.SetActiveC(true);
+        //coinActiveManager.SetActiveC(true);
     }
     
 
