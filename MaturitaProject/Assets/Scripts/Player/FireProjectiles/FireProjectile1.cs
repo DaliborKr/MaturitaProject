@@ -13,7 +13,7 @@ public class FireProjectile1 : MonoBehaviour
 
     private FireLinePlayer fireLinePlayer;
 
-    private Vector2 fireDirection;
+    private Vector3 fireDirection;
 
     [SerializeField]
     private int damageNumberFireProjectile1;

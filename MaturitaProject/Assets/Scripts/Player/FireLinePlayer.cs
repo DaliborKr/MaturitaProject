@@ -59,7 +59,7 @@ public class FireLinePlayer : MonoBehaviour
 
         Vector3 lineFirePointPlayerV3 = new Vector3(lineFirePointPlayerV2.x, lineFirePointPlayerV2.y, -1);
 
-        if (angle < 75)
+        if (angle < 45)
         {
             Vector3 fireDirectionV3 = new Vector3(fireDirectionMultiplied.x, fireDirectionMultiplied.y, 0);
 
@@ -78,6 +78,6 @@ public class FireLinePlayer : MonoBehaviour
 
     public Vector2 getFireDirection()
     {
-        return fireDirection;
+        return fireDirectionHelpV3;
     }
 }

@@ -18,7 +18,7 @@ public class PlayerCombatController : MonoBehaviour
 
     private bool gotInput;
     private bool isAtacking;
-    private bool isMelee;
+    public bool isMelee;
     private bool isTryingToFire;
 
     public int damageNumberAttack1;
@@ -81,7 +81,7 @@ public class PlayerCombatController : MonoBehaviour
                     if (combatEnabled)
                     {
                         gotInput = true;
-                        lastInputTime = Time.time;
+                        //lastInputTime = Time.time;
                     }
                 }
                 if (!isMelee && !pc.GetIsWallsliding())
@@ -159,19 +159,26 @@ public class PlayerCombatController : MonoBehaviour
     {
         if (gotInput && !pc.GetIsWallsliding())
         {
-            if (!isAtacking)
+            if (!isAtacking && Time.time >= lastInputTime + inputTimer)
             {
+                lastInputTime = Time.time;
                 gotInput = false;
                 isAtacking = true;
                 animator.SetBool("attack1", true);
                 animator.SetBool("isAttacking", isAtacking);
             }
+            else if (!isAtacking && Time.time < lastInputTime + inputTimer)
+            {
+                gotInput = false;
+            }
         }
 
+        /*
         if (Time.time >= lastInputTime + inputTimer)
         {
             gotInput = false;
         }
+        */
     }
 
     private void CheckAttackHitbox()

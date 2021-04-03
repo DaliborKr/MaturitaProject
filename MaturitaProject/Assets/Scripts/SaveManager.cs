@@ -53,11 +53,8 @@ public static class SaveManager
 
             stream.Close();
 
-            return playerData;
+            return playerData; 
         }
-
-        Debug.LogError($"File not found! (Path: {path})");
-        return null;
     }
 
 }

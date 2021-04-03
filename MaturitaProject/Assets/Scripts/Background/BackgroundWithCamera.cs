@@ -7,6 +7,7 @@ public class BackgroundWithCamera : MonoBehaviour
     private float length, startpos;
     public GameObject cam;
     public float parallaxEffect;
+    private PlayerController pc;
 
 
     // Start is called before the first frame update
@@ -14,7 +15,6 @@ public class BackgroundWithCamera : MonoBehaviour
     {
         startpos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
-
     }
 
     // Update is called once per frame
@@ -24,6 +24,9 @@ public class BackgroundWithCamera : MonoBehaviour
         float dist = (cam.transform.position.x * parallaxEffect);
 
         transform.position = new Vector3(startpos + dist, cam.transform.position.y + 0.5f, transform.position.z);
+
+        Debug.Log("Back: x-" + transform.position.x + ", y-" + transform.position.y);
+        Debug.Log("Cam: x-" + cam.transform.position.x + ", y-" + cam.transform.position.y);
 
         if (temp > startpos + length)
         {

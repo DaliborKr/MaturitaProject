@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         {
             if (isOnGround)
             {
-                rb.velocity = new Vector2(speedMovement * movementInputValue, rb.velocity.y);
+                rb.velocity = new Vector2(speedMovement * movementInputValue, rb.velocity.y);               
             }
             else if (!isOnGround && !isWallsliding && movementInputValue != 0)
             {

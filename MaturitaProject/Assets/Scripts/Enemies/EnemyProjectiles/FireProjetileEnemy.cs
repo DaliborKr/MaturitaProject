@@ -46,7 +46,16 @@ public class FireProjetileEnemy : MonoBehaviour
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, radiusFireProjectile, whatIsPlayer);
 
-        AttackDetails attackDetails = new AttackDetails(damageNumberFireProjectile1, pc.transform.position, pc.GetFacingDir());
+        AttackDetails attackDetails;
+
+        if (pc != null)
+        {
+            attackDetails = new AttackDetails(damageNumberFireProjectile1, pc.transform.position, pc.GetFacingDir());
+        }
+        else
+        {
+            attackDetails = new AttackDetails(damageNumberFireProjectile1, new Vector2(0,0), 1);
+        }
 
         foreach (Collider2D collider in objects)
         {
