@@ -31,6 +31,7 @@ public class PlayerGetDamage : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = (1f);
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         deadFade = GameObject.Find("DeadFade");
         cameraShake = GameObject.Find("PlayerCamera").GetComponent<CameraShake>();

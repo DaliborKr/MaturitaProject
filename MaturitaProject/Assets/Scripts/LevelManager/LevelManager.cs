@@ -28,11 +28,14 @@ public class LevelManager : MonoBehaviour
 
     private PauseMenu pauseMenu;
 
+    private Animator transitionAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
         pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
+        transitionAnimator = GameObject.Find("TransitionLevel").GetComponent<Animator>();
     }
 
     private void Update()
@@ -72,16 +75,28 @@ public class LevelManager : MonoBehaviour
                 }
                 pc.currentSpawnPos = nextLevelSpawn;
                 pc.currentLevelName = sceneName;
-                savePlayerManager.SavePlayer();
-                savePlayerManager.LoadPlayerAndLevel();
+
+                StartCoroutine(LoadLevel());
             }
         }
     }
 
+    public IEnumerator LoadLevel()
+    {
+        transitionAnimator.SetTrigger("SceneEnd");
+
+        yield return new WaitForSeconds(0.7f);
+
+        savePlayerManager.SavePlayer();
+        savePlayerManager.LoadPlayerAndLevel();
+    }
+
+    /*
     public void LoadScene()
     {
         SceneManager.LoadScene(sceneName);
     }
+    */
 
     private void OnDrawGizmos()
     {

@@ -13,9 +13,12 @@ public class PauseMenu : MonoBehaviour
 
     private SavePlayerManager savePlayerManager;
 
+    private Animator transitionAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
+        transitionAnimator = GameObject.Find("TransitionLevel").GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
@@ -69,15 +72,36 @@ public class PauseMenu : MonoBehaviour
     }
     public void LoadPlayerButton()
     {
-        savePlayerManager.LoadPlayerAndLevel();
         DeactivateMenu();
+        Time.timeScale = 1f;
+        StartCoroutine(LoadPlayer());
     }
 
     public void QuitGameButton()
     {
+        DeactivateMenu();
+        Time.timeScale = 1f;
+        StartCoroutine(QuitGame());
+    }
+
+    public IEnumerator LoadPlayer()
+    {
+        transitionAnimator.SetTrigger("SceneEnd");
+
+        yield return new WaitForSeconds(0.7f);
+
+        savePlayerManager.LoadPlayerAndLevel();       
+    }
+
+    public IEnumerator QuitGame()
+    {
+        transitionAnimator.SetTrigger("SceneEnd");
+
+        yield return new WaitForSeconds(0.7f);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 1f;
         SceneManager.LoadScene("Start_Scene");
     }
+
 }
