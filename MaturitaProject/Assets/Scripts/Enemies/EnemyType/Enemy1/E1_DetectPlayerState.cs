@@ -6,7 +6,7 @@ public class E1_DetectPlayerState : DetectPlayerState
 {
     private Enemy1 enemyType;
 
-    public E1_DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
+    public E1_DetectPlayerState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
     {
         this.enemyType = enemyType;
     }

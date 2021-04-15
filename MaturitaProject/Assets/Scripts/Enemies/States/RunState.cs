@@ -12,7 +12,7 @@ public class RunState : State
     protected bool isDetectingLedge;
     protected bool isDetectingWall;
 
-    public RunState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_RunState stateData) : base(stateMachine, enemy, animatorNameBool)
+    public RunState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, D_RunState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
     }

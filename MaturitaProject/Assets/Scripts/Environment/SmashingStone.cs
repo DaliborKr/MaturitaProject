@@ -68,7 +68,6 @@ public class SmashingStone : MonoBehaviour
             transform.Translate(Vector2.zero);
             transform.position = startPosition;
         }
-        
     }
 
     public void CheckStoneHitbox()
@@ -81,8 +80,7 @@ public class SmashingStone : MonoBehaviour
 
             foreach (Collider2D collider in playerObjects)
             {
-                Debug.Log("melo by byt au");
-                collider.transform.SendMessage("GetDamageSpikes", attackDetails);
+                collider.transform.SendMessage("GetDamage", attackDetails);
             }
 
             Collider2D[] groundObjects = Physics2D.OverlapBoxAll(hitBoxPoint.position, damageDistance, 0, whatIsGround);

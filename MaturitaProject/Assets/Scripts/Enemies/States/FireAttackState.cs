@@ -8,7 +8,7 @@ public class FireAttackState : AttackState
     protected D_FireAttackState stateData;
 
 
-    public FireAttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_FireAttackState stateData) : base(stateMachine, enemy, animatorNameBool, attackPoint)
+    public FireAttackState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_FireAttackState stateData) : base(stateMachine, enemy, animatorNameBool, attackPoint)
     {
         this.stateData = stateData;
     }

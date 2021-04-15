@@ -11,7 +11,7 @@ public class MoveState : State
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
 
-    public MoveState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_MoveState stateData) : base(stateMachine, enemy, animatorNameBool)
+    public MoveState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, D_MoveState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
     }

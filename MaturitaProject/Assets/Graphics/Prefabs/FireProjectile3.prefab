@@ -120,7 +120,7 @@ MonoBehaviour:
   whatIsDamageable:
     serializedVersion: 2
     m_Bits: 1024
-  damageNumberFireProjectile1: 20
+  damageNumberFireProjectile1: 8
   radiusFireProjectile1: 0.25
   projectileSpeed: 20
 --- !u!58 &961681695157418668

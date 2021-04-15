@@ -19,3 +19,4 @@ public class DragonsHead : MonoBehaviour
         Instantiate(projectilePrefab, transform.position, transform.rotation);
     }
 }
+

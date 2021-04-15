@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public FiniteStateMachine stateMachineEnemy;
+    public StateMachine stateMachineEnemy;
 
     public D_Enemy enemyData;
 
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         animationToStates = aliveGameObject.GetComponent<AnimationToStates>();
         player = GameObject.Find("Player");
 
-        stateMachineEnemy = new FiniteStateMachine();
+        stateMachineEnemy = new StateMachine();
 
         curentHealth = enemyData.maxHealth;
         facingDir = 1;
@@ -139,7 +139,6 @@ public class Enemy : MonoBehaviour
 
         if (curentHealth <= 0)
         {
-            Debug.Log("umrel");
             return true;
         }
         else

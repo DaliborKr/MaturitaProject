@@ -6,7 +6,7 @@ public class E2_MoveState : MoveState
 {
     private Enemy2 enemyType;
 
-    public E2_MoveState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_MoveState stateData, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
+    public E2_MoveState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, D_MoveState stateData, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
     {
         this.enemyType = enemyType;
     }

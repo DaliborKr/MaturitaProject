@@ -62,7 +62,6 @@ public class Door : MonoBehaviour
         {
             isDoorOpen = false;
         }
-
     }
 
     public void DoorMove()

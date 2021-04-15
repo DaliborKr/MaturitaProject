@@ -33,7 +33,6 @@ public class FireProjectileDragonsHead : MonoBehaviour
 
         foreach (Collider2D collider in objects)
         {
-            Debug.Log("melo by byt au");
             collider.transform.SendMessage("GetDamage", attackDetails);
             Destroy(gameObject);
         }

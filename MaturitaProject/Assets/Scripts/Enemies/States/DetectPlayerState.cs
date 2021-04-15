@@ -12,7 +12,7 @@ public class DetectPlayerState : State
     protected bool isDetectingWall;
     protected bool isDetectingLedge;
 
-    public DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData) : base(stateMachine, enemy, animatorNameBool)
+    public DetectPlayerState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData) : base(stateMachine, enemy, animatorNameBool)
     {
         this.stateData = stateData;
     }

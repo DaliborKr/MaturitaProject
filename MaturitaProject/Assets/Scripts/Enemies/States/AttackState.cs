@@ -10,7 +10,7 @@ public class AttackState : State
     protected bool isInMinAgroRange;
     protected bool isInMaxAgroRange;
 
-    public AttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint) : base(stateMachine, enemy, animatorNameBool)
+    public AttackState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint) : base(stateMachine, enemy, animatorNameBool)
     {
         this.attackPoint = attackPoint;
     }

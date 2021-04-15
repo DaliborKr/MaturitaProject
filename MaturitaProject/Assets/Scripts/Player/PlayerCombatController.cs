@@ -13,6 +13,8 @@ public class PlayerCombatController : MonoBehaviour
 
     private LineRenderer fireLinePlayer;
 
+    private FireLinePlayer fireLinePlayerScript;
+
     [SerializeField]
     private bool combatEnabled;
 
@@ -55,6 +57,7 @@ public class PlayerCombatController : MonoBehaviour
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         fireLinePlayer = GameObject.Find("fireLinePlayer").GetComponent<LineRenderer>();
         pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
+        fireLinePlayerScript = GameObject.Find("fireLinePlayer").GetComponent<FireLinePlayer>();
         isMelee = true;
     }
 
@@ -107,8 +110,9 @@ public class PlayerCombatController : MonoBehaviour
 
             if (Input.GetMouseButtonUp(1) && isTryingToFire)
             {
-                pc.EnableFlip();
+                pc.EnableFlip();              
                 pc.FlipCharacter();
+                fireLinePlayerScript.FlipReaction();
                 pc.DisableFlip();
             }
         }       
@@ -131,6 +135,7 @@ public class PlayerCombatController : MonoBehaviour
         isTryingToFire = false;
         animator.SetBool("isTryingToFire", isTryingToFire);
         fireLinePlayer.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked;
         pc.EnableFlip();
     }
 
@@ -149,10 +154,11 @@ public class PlayerCombatController : MonoBehaviour
     {
         lastFireTime = Time.time;
         animator.SetBool("isFiring", false);
-        Instantiate(projectilePrefabs[projectileType], firePointPlayer.position, firePointPlayer.rotation);
-        pc.EnableFlip();       
-        Cursor.lockState = CursorLockMode.Locked;
 
+        Instantiate(projectilePrefabs[projectileType], firePointPlayer.position, firePointPlayer.rotation);
+
+        pc.EnableFlip();  
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void CheckAttacks()
@@ -172,13 +178,6 @@ public class PlayerCombatController : MonoBehaviour
                 gotInput = false;
             }
         }
-
-        /*
-        if (Time.time >= lastInputTime + inputTimer)
-        {
-            gotInput = false;
-        }
-        */
     }
 
     private void CheckAttackHitbox()
@@ -189,7 +188,6 @@ public class PlayerCombatController : MonoBehaviour
 
         foreach (Collider2D collider in objects)
         {
-            Debug.Log("melo by byt au");
             collider.transform.parent.SendMessage("GetDamage", attackDetails);
         }
     }
@@ -205,69 +203,4 @@ public class PlayerCombatController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(rangeCheckAttack1.position, radiusAttack1);
     }
-
-    /*
-    private bool isInMeleeRange;
-    private bool gotInput;
-
-    private float lastInputTime;
-
-    private PlayerController pc;
-
-    public Transform attackRangeCheck;
-
-    public int damageNumber = 60;
-
-    public float attackRadius = 2;
-
-    public LayerMask whatIsDamageable;
-
-    public void Start()
-    {
-        pc = GameObject.Find("Player").GetComponent<PlayerController>();
-    }
-
-    public void Update()
-    {
-        CheckInput();
-        //CheckIsAttemptingToAttack();
-    }
-
-    public void CheckInput()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            lastInputTime = Time.time;
-            gotInput = true;
-
-            CheckIsInAttackRange();
-        }
-    }
-
-    public void CheckIsAttemptingToAttack()
-    {
-        if (gotInput)
-        {
-            gotInput = false;
-            
-        }
-    }
-
-    public void CheckIsInAttackRange()
-    {
-        Collider2D[] objects = Physics2D.OverlapCircleAll(attackRangeCheck.position, attackRadius, whatIsDamageable);
-
-        AttackDetails attackDetails = new AttackDetails(damageNumber, pc.GetFacingDir());
-
-        foreach (Collider2D collider in objects){
-            Debug.Log("melo by byt au");
-            collider.transform.parent.SendMessage("GetDamage", attackDetails);
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attackRangeCheck.position, attackRadius);
-    }
-    */
 }

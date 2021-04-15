@@ -25,9 +25,6 @@ public class BackgroundWithCamera : MonoBehaviour
 
         transform.position = new Vector3(startpos + dist, cam.transform.position.y + 0.5f, transform.position.z);
 
-        Debug.Log("Back: x-" + transform.position.x + ", y-" + transform.position.y);
-        Debug.Log("Cam: x-" + cam.transform.position.x + ", y-" + cam.transform.position.y);
-
         if (temp > startpos + length)
         {
             startpos += length;

@@ -41,8 +41,9 @@ public class ShopItem : MonoBehaviour
 
     public virtual void AdminItem()
     {
-
+        ;
     }
+
 
     public void SavePlayerAfterShopping()
     {
@@ -54,6 +55,11 @@ public class ShopItem : MonoBehaviour
         description.enabled = true;
     }
     public void DisableDestriptionText()
+    {
+        description.enabled = false;
+    }
+
+    private void OnDisable()
     {
         description.enabled = false;
     }

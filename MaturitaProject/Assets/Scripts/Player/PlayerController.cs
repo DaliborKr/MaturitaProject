@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     private bool isFirstDashInAir;
     private bool isAttemptingToJump;
     private bool isWalking;
-    private bool cameraShakeDone;
 
     public float speedMovement = 10.0f;
     public float jumpForce = 16.0f;
@@ -103,7 +102,6 @@ public class PlayerController : MonoBehaviour
         if (!pauseMenu.isActivated)
         {
             movementInputValue = Input.GetAxisRaw("Horizontal");
-
             if (Input.GetButtonDown("Jump"))
             {
                 AttemptToJump();
@@ -117,7 +115,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     private void UpdateAnimations()
     {
         animator.SetBool("isWalking", isWalking);
@@ -168,7 +165,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     private void AttemptToJump()
     {
         isAttemptingToJump = true;
@@ -189,7 +185,6 @@ public class PlayerController : MonoBehaviour
                 isAttemptingToJump = false;
             }
         }
-
     }
 
     private void Jump()
@@ -223,7 +218,6 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //iswallJumping = true;
                 rb.velocity = new Vector2(wallJumpForce * -facingDir, wallJumpForceStraight);
                 FlipWallJumpingCharacter();
                 iswallJumping = true;
@@ -232,8 +226,7 @@ public class PlayerController : MonoBehaviour
 
             isWallsliding = false;
             currentNumberOfJumps --;
-        }
-        
+        } 
     }
 
     private void Dash()
@@ -321,11 +314,6 @@ public class PlayerController : MonoBehaviour
     {
         if ((isOnGround && rb.velocity.y <= 0) || isWallsliding)
         {
-            if (!cameraShakeDone)
-            {
-                //cameraShake.cameraShaking = true;
-                cameraShakeDone = true;
-            }
             currentNumberOfJumps = maxNumberOfJumps;
             isFirstDashInAir = true;
             wasOnGround = true;
@@ -335,12 +323,10 @@ public class PlayerController : MonoBehaviour
         {                       
             currentNumberOfJumps--;
             wasOnGround = false;
-            cameraShakeDone = false;
         }
         else 
         { 
             wasOnGround = false;
-            cameraShakeDone = false;
         }
         
         if (currentNumberOfJumps <= 0)

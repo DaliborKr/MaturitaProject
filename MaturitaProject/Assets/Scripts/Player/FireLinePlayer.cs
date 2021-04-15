@@ -18,11 +18,14 @@ public class FireLinePlayer : MonoBehaviour
 
     private int facingAdder;
 
+    private bool isFlipped;
+
     void Start()
     {
         fireLine = GetComponent<LineRenderer>();
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         firePointPlayer = GameObject.Find("firePointPlayer");
+        isFlipped = false;
     }
 
     void Update()
@@ -59,7 +62,7 @@ public class FireLinePlayer : MonoBehaviour
 
         Vector3 lineFirePointPlayerV3 = new Vector3(lineFirePointPlayerV2.x, lineFirePointPlayerV2.y, -1);
 
-        if (angle < 45)
+        if (angle < 45 || isFlipped)
         {
             Vector3 fireDirectionV3 = new Vector3(fireDirectionMultiplied.x, fireDirectionMultiplied.y, 0);
 
@@ -67,6 +70,7 @@ public class FireLinePlayer : MonoBehaviour
 
             fireLine.SetPosition(0, lineFirePointPlayerV3);
             fireLine.SetPosition(1, (fireDirectionV3 + lineFirePointPlayerV3));
+            isFlipped = false;
         }
         else
         {
@@ -79,5 +83,10 @@ public class FireLinePlayer : MonoBehaviour
     public Vector2 getFireDirection()
     {
         return fireDirectionHelpV3;
+    }
+
+    public void FlipReaction()
+    {
+        isFlipped = true;
     }
 }

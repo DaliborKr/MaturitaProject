@@ -6,7 +6,7 @@ public class E1_MeleeAttackState : MeleeAttackState
 {
     protected Enemy1 enemyType;
 
-    public E1_MeleeAttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_MeleeAttackState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, attackPoint, stateData)
+    public E1_MeleeAttackState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_MeleeAttackState stateData, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool, attackPoint, stateData)
     {
         this.enemyType = enemyType;
     }

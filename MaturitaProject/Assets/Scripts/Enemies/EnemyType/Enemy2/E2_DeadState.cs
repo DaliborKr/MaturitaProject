@@ -5,7 +5,7 @@ using UnityEngine;
 public class E2_DeadState : DeadState
 {
     private Enemy2 enemyType;
-    public E2_DeadState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool)
+    public E2_DeadState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool)
     {
         this.enemyType = enemyType;
     }

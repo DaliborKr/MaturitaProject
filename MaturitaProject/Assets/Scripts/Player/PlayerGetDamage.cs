@@ -47,20 +47,13 @@ public class PlayerGetDamage : MonoBehaviour
     public void GetDamage(AttackDetails attackDetails)
     { 
         currentHealth -= attackDetails.damageNumber;   
-        if (attackDetails.facingDir == 1)
-        {
-            pc.AddForceWhenHitted(true, hitForce);
-        }
-        else if(attackDetails.facingDir == -1)
-        {
-            pc.AddForceWhenHitted(false, hitForce);
-        }
+
+        pc.AddForceWhenHitted(true, hitForce);
 
         if (currentHealth >= 0)
         {
             cameraShake.cameraShaking = true;
         }
-
         if (currentHealth <= 0)
         {
             SetHealthImages();
@@ -72,20 +65,8 @@ public class PlayerGetDamage : MonoBehaviour
     {
         if (Time.time >= lastTimeSpikesDamage + delaySpikesDamage)
         {
-            pc.AddForceWhenHitted(true, hitForce);
-
             lastTimeSpikesDamage = Time.time;
-            currentHealth -= attackDetails.damageNumber;
-            if (currentHealth >= 0)
-            {
-                cameraShake.cameraShaking = true;
-            }
-
-            if (currentHealth <= 0)
-            {
-                SetHealthImages();
-                Die();
-            }
+            GetDamage(attackDetails);
         }    
     }
 

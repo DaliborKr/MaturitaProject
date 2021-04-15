@@ -9,7 +9,7 @@ public class E2_DetectPlayerState : DetectPlayerState
     protected bool isDetectingBehindWall;
     protected bool isDetectingBehindLedge;
 
-    public E2_DetectPlayerState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
+    public E2_DetectPlayerState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, D_DetectPlayerState stateData, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool, stateData)
     {
         this.enemyType = enemyType;
     }
@@ -20,7 +20,6 @@ public class E2_DetectPlayerState : DetectPlayerState
 
         isDetectingBehindLedge = enemyType.CheckLedgeBehind();
         isDetectingBehindWall = enemyType.CheckWallBehind();
-        //Debug.Log("ledge behind:" + isDetectingBehindLedge);
     }
 
     public override void Enter()
@@ -84,9 +83,6 @@ public class E2_DetectPlayerState : DetectPlayerState
             enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
         }
-        
-        //Debug.Log("Detect");
-        
     }
 
     public override void PhysicsUpdate()

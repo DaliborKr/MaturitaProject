@@ -6,7 +6,7 @@ public class E2_FireAttackState : FireAttackState
 {
     protected Enemy2 enemyType;
 
-    public E2_FireAttackState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_FireAttackState stateData, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool, attackPoint, stateData)
+    public E2_FireAttackState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, Transform attackPoint, D_FireAttackState stateData, Enemy2 enemyType) : base(stateMachine, enemy, animatorNameBool, attackPoint, stateData)
     {
         this.enemyType = enemyType;
     }

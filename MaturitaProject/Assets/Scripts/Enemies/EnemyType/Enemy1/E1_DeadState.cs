@@ -6,7 +6,7 @@ public class E1_DeadState : DeadState
 {
     private Enemy1 enemyType;
 
-    public E1_DeadState(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool)
+    public E1_DeadState(StateMachine stateMachine, Enemy enemy, string animatorNameBool, Enemy1 enemyType) : base(stateMachine, enemy, animatorNameBool)
     {
         this.enemyType = enemyType;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class State
 {
-    protected FiniteStateMachine stateMachine;
+    protected StateMachine stateMachine;
     protected Enemy enemy;
 
     protected float startTime;
@@ -13,7 +13,7 @@ public class State
 
     protected bool isDead = false;
 
-    public State(FiniteStateMachine stateMachine, Enemy enemy, string animatorNameBool)
+    public State(StateMachine stateMachine, Enemy enemy, string animatorNameBool)
     {
         this.stateMachine = stateMachine;
         this.enemy = enemy;
