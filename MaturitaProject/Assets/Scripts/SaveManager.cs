@@ -35,11 +35,12 @@ public static class SaveManager
 
             return playerData;
         }
+        
         else
         {
             float[] defPosition = new float[3];
-            defPosition[0] = -140;
-            defPosition[1] = -63;
+            defPosition[0] = -26;
+            defPosition[1] = -237;
             defPosition[2] = 0;
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -47,7 +48,7 @@ public static class SaveManager
             path = Application.persistentDataPath + "/playerData.dal";
             Debug.Log(path);
             FileStream stream = new FileStream(path, FileMode.Create);
-            PlayerData playerData = new PlayerData(0, 1, 10, 10, false, 0, 3, false, false, defPosition, "Level_Lobby");
+            PlayerData playerData = new PlayerData(0, 1, 10, 10, false, 0, 3, false, false, defPosition, "Level_Tutorial");
 
             formatter.Serialize(stream, playerData);
 

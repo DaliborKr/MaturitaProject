@@ -87,14 +87,6 @@ public class Enemy : MonoBehaviour
     public virtual void GetDamage(AttackDetails attackDetails)
     {
         curentHealth -= attackDetails.damageNumber;
-        /*
-        Debug.Log("au");
-
-        if (curentHealth <= 0)
-        {
-            Die();
-        }
-        */
     }
 
     public virtual void Die()

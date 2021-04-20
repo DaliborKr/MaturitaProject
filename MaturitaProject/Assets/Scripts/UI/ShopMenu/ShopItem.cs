@@ -47,7 +47,9 @@ public class ShopItem : MonoBehaviour
 
     public void SavePlayerAfterShopping()
     {
+        pc.currentSpawnPos = pc.transform.position;
         savePlayerManager.SavePlayer();
+        playerGetDamage.currentHealth = playerGetDamage.maxHealth;
     }
 
     public void EnableDestriptionText()

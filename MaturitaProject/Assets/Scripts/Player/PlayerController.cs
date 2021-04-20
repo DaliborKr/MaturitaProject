@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private int facingDir;
     private int inputDir;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator animator;
 
     private bool isFacingRight = true;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private bool flippedInAir;
     private bool iswallJumping;
     private bool isDashing;
-    private bool canMove;
+    public bool canMove;
     private bool canFlip;
     private bool isFirstDashInAir;
     private bool isAttemptingToJump;

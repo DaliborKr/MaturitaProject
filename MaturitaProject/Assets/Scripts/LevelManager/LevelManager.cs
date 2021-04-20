@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
         pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();
         transitionAnimator = GameObject.Find("TransitionLevel").GetComponent<Animator>();
@@ -75,7 +76,8 @@ public class LevelManager : MonoBehaviour
                 }
                 pc.currentSpawnPos = nextLevelSpawn;
                 pc.currentLevelName = sceneName;
-
+                pc.canMove = false;
+                pc.rb.velocity = Vector2.zero;
                 StartCoroutine(LoadLevel());
             }
         }
@@ -87,6 +89,7 @@ public class LevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.7f);
 
+        pc.canMove = true;
         savePlayerManager.SavePlayer();
         savePlayerManager.LoadPlayerAndLevel();
     }
