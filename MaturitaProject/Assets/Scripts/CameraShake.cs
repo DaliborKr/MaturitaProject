@@ -17,7 +17,6 @@ public class CameraShake : MonoBehaviour
     {
         cameraShaking = false;
         timeCameraShakeLeft = 0;
-
 	}
 
     // Update is called once per frame

@@ -49,7 +49,6 @@ public class E2_MoveState : MoveState
             enemyType.idleState.SetFlipAfterIdle(false);
             stateMachine.ChangeState(enemyType.idleState);
         }
-        //Debug.Log("Move");
     }
 
     public override void PhysicsUpdate()

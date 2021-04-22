@@ -13,7 +13,6 @@ public class OptionsManager : MonoBehaviour
 
     public GameObject mainMenu;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (Screen.fullScreen)
@@ -51,7 +50,6 @@ public class OptionsManager : MonoBehaviour
         SetNewResolution(currentResIndex);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

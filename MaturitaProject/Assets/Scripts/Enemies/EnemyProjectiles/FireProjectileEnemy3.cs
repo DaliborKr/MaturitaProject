@@ -16,8 +16,5 @@ public class FireProjectileEnemy3 : FireProjetileEnemy
             fireDirection.x *= -1;
         }
         fireDirection.y += 0.3f;
-        
-
-        //fireDirection = new Vector2(0.8f, 0.3f);
     }
 }

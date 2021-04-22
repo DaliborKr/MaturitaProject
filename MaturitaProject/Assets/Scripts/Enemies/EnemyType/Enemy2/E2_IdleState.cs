@@ -43,7 +43,6 @@ public class E2_IdleState : IdleState
         {
             stateMachine.ChangeState(enemyType.moveState);
         }
-        //Debug.Log("Idle");
     }
 
     public override void PhysicsUpdate()

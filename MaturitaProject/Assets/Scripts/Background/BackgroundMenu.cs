@@ -13,7 +13,6 @@ public class BackgroundMenu : MonoBehaviour
     {
         startpos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
-
     }
 
     // Update is called once per frame

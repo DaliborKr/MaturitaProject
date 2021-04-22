@@ -84,7 +84,6 @@ public class PlayerCombatController : MonoBehaviour
                     if (combatEnabled)
                     {
                         gotInput = true;
-                        //lastInputTime = Time.time;
                     }
                 }
                 if (!isMelee && !pc.GetIsWallsliding())

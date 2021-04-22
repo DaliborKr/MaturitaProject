@@ -24,7 +24,6 @@ public class CheckPointDeactivated : MonoBehaviour
     private PauseMenu pauseMenu;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         savePlayerManager = GameObject.Find("Player").GetComponent<SavePlayerManager>();
@@ -37,7 +36,6 @@ public class CheckPointDeactivated : MonoBehaviour
         SaveLevel();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         CheckPlayerInArea();

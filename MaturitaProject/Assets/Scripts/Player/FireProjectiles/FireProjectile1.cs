@@ -57,7 +57,6 @@ public class FireProjectile1 : MonoBehaviour
 
         foreach (Collider2D collider in objects)
         {
-            Debug.Log("melo by byt au");
             collider.transform.parent.SendMessage("GetDamage", attackDetails);
             Destroy(gameObject);
         }

@@ -13,14 +13,12 @@ public class ActiveWeapon : MonoBehaviour
 
     private Image currentWeaponImage;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerCombatController = GameObject.Find("Player").GetComponent<PlayerCombatController>();
         currentWeaponImage = GetComponent<Image>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (playerCombatController.isMelee)

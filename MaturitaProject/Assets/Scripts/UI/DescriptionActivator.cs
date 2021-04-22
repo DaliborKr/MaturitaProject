@@ -16,7 +16,6 @@ public class DescriptionActivator : MonoBehaviour
         isPlayerIn = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ManageText();

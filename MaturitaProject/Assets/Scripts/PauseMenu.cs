@@ -15,7 +15,6 @@ public class PauseMenu : MonoBehaviour
 
     private Animator transitionAnimator;
 
-    // Start is called before the first frame update
     void Start()
     {
         transitionAnimator = GameObject.Find("TransitionLevel").GetComponent<Animator>();
@@ -27,7 +26,6 @@ public class PauseMenu : MonoBehaviour
         canBeActivated = true;
 }
 
-    // Update is called once per frame
     void Update()
     {
         CheckActivatePuseMenu();
@@ -103,5 +101,4 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         SceneManager.LoadScene("Start_Scene");
     }
-
 }

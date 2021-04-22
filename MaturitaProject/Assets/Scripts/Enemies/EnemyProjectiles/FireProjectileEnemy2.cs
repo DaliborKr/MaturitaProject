@@ -6,9 +6,7 @@ public class FireProjectileEnemy2 : FireProjetileEnemy
 {
     public override void SetProjectileDirectory()
     {
-        base.SetProjectileDirectory();
-
-        
+        base.SetProjectileDirectory();      
 
         if (pcPos.x < startPos.x)
         {

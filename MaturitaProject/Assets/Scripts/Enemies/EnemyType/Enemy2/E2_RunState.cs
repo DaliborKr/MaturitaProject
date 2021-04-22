@@ -65,7 +65,6 @@ public class E2_RunState : RunState
         {
             stateMachine.ChangeState(enemyType.detectPlayerState);
         }
-        //Debug.Log("Run");
     }
 
     public override void PhysicsUpdate()

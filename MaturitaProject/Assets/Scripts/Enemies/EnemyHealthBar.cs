@@ -13,8 +13,6 @@ public class EnemyHealthBar : MonoBehaviour
 
     void Start()
     {
-        //healthBar = GameObject.Find("CanvasHealthBar/HealthBar").GetComponent<HealthBar>();
-        //enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy1>();
         maxHealth = enemy.GetMaxHealth();
         currentHealth = enemy.GetCurrentHealth();
         healthBar.setMaxHealth(maxHealth);

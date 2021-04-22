@@ -15,12 +15,6 @@ public class CoinBehavior : MonoBehaviour
 
     public CoinActiveManager coinActiveManager;
 
-    
-    private void Awake()
-    {
-        //coinActiveManager.SetActiveC(true);
-    }
-    
 
     private void Start()
     {
@@ -39,10 +33,6 @@ public class CoinBehavior : MonoBehaviour
             scoreText.IncreaseScore(scoreValue);
             CoinsCollectedNotSaved.colledButNotSavedCoins.Add(coinActiveManager);
             gameObject.SetActive(false);
-
-            //coinActiveManager.SetActiveC(false);
-
-            //Destroy(gameObject);
         }
     }
 
@@ -50,16 +40,4 @@ public class CoinBehavior : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, hitBoxRadius);
     }
-
-    /*
-    void OnTriggerEnter2D(Collider2D hitInfo)
-    {
-        if (hitInfo.name == "Player")
-        {
-            scoreText.IncreaseScore(scoreValue);
-
-            Destroy(gameObject);
-        }
-    }
-    */
 }

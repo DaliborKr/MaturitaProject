@@ -27,7 +27,6 @@ public class FireProjetileEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
         pcPos = new Vector2(pc.transform.position.x, pc.transform.position.y);
-        Debug.Log(pcPos);
         SetProjectileDirectory();
     }
 
@@ -59,7 +58,6 @@ public class FireProjetileEnemy : MonoBehaviour
 
         foreach (Collider2D collider in objects)
         {
-            Debug.Log("melo by byt au");
             collider.transform.SendMessage("GetDamage", attackDetails);
             Destroy(gameObject);
         }

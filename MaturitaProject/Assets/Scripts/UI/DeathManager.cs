@@ -10,7 +10,6 @@ public class DeathManager : MonoBehaviour
 
     private PauseMenu pauseMenu;
 
-    // Start is called before the first frame update
     void Start()
     {
         pauseMenu = GameObject.Find("PauseManager").GetComponent<PauseMenu>();

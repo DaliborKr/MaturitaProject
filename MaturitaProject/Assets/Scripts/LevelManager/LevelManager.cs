@@ -30,7 +30,6 @@ public class LevelManager : MonoBehaviour
 
     private Animator transitionAnimator;
 
-    // Start is called before the first frame update
     void Start()
     {
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -44,7 +43,6 @@ public class LevelManager : MonoBehaviour
         ChangeLevel();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         CheckPlayerInArea();
@@ -93,13 +91,6 @@ public class LevelManager : MonoBehaviour
         savePlayerManager.SavePlayer();
         savePlayerManager.LoadPlayerAndLevel();
     }
-
-    /*
-    public void LoadScene()
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-    */
 
     private void OnDrawGizmos()
     {
